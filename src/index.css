@@ -7,3 +7,8 @@
 body{
   font-family: Arial, sans-serif;
 }
+
+#root{
+  width:100%;
+  min-height:100vh;
+}
