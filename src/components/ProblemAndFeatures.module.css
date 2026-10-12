@@ -1,0 +1,206 @@
+
+.section {
+  padding: 80px 24px;
+  background:
+    radial-gradient(
+      ellipse at 85% 55%,
+      rgba(85, 230, 224, 0.035),
+      transparent 55%
+    ),
+    #2a1d17;
+}
+
+/* Problem section */
+.problem {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 80px;
+  scroll-margin-top: 24px;
+}
+
+.label {
+  color: #55e6e0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.problem h2,
+.featuresHeading {
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: #e7d7c5;
+}
+
+.problem h2 {
+  max-width: 720px;
+  margin: 0 auto 28px;
+}
+
+.problem h2 span {
+  color: #c87952;
+}
+
+/* Three problem cards */
+.painGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 48px auto 0;
+}
+
+.painCard {
+  padding: 32px 20px;
+  border: 1px dashed rgba(200, 121, 82, 0.4);
+  border-radius: 14px;
+  background-color: rgba(255, 255, 255, 0.02);
+  color: #c87952;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.painCard:nth-child(1) {
+  transform: rotate(-1.5deg);
+}
+
+.painCard:nth-child(3) {
+  transform: rotate(1.5deg);
+}
+
+.painCard:hover {
+  transform: translateY(-4px) rotate(0);
+  border-color: #c87952;
+}
+
+.painCard svg {
+  opacity: 0.8;
+}
+
+.painCard h3 {
+  margin: 12px 0 4px;
+  color: #e7d7c5;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.painCard p {
+  color: #b9a99a;
+  font-size: 14px;
+}
+
+/* Arrow connecting problem to solution */
+.problemArrow {
+  display: block;
+  margin: 24px auto 16px;
+  color: #c87952;
+  opacity: 0.8;
+}
+
+/* Highlighted solution */
+.solutionCard {
+  display: inline-block;
+  max-width: 100%;
+  padding: 22px 36px;
+  border: 1px solid rgba(200, 121, 82, 0.8);
+  border-radius: 14px;
+  background-color: rgba(200, 121, 82, 0.08);
+  box-shadow: 0 0 28px rgba(200, 121, 82, 0.35);
+  color: #e7d7c5;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.solutionCard strong {
+  color: #c87952;
+}
+
+/* Features section — existing design preserved */
+.features {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  scroll-margin-top: 24px;
+}
+
+.featuresHeading {
+  max-width: 650px;
+  margin: 0 auto 40px;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* Responsive layout */
+@media (max-width: 800px) {
+  .section {
+    padding: 64px 20px;
+  }
+
+  .problem {
+    padding-bottom: 64px;
+  }
+
+  .problem h2,
+  .featuresHeading {
+    font-size: 30px;
+  }
+
+  .painGrid {
+    gap: 12px;
+  }
+
+  .painCard {
+    padding: 20px 10px;
+  }
+
+  .featureGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 550px) {
+  .section {
+    padding: 48px 20px;
+  }
+
+  .problem {
+    padding-bottom: 48px;
+  }
+
+  .problem h2,
+  .featuresHeading {
+    font-size: 27px;
+  }
+
+  .painGrid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .painCard:nth-child(1),
+  .painCard:nth-child(3) {
+    transform: none;
+  }
+
+  .solutionCard {
+    padding: 16px;
+    font-size: 14px;
+  }
+
+  .featureGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
