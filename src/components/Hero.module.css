@@ -1,0 +1,107 @@
+
+.hero {
+  padding: 100px 24px;
+  text-align: center;
+    background:
+    radial-gradient(
+      ellipse at 50% 15%,
+      rgba(200, 121, 82, 0.12),
+      transparent 60%
+    ),
+    #211713;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Small introductory label */
+.label {
+  color: #55e6e0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+
+/* Main heading */
+.heroContent h1 {
+  font-family: var(--font-heading);
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: #e7d7c5;
+  margin-bottom: 24px;
+}
+
+/* Description */
+.description {
+  max-width: 600px;
+  margin: 0 auto 32px;
+  color: #b9a99a;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Button container */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* Primary button */
+.primaryButton {
+  padding: 14px 24px;
+  border: 1px solid #c87952;
+  border-radius: 8px;
+  background-color: #c87952;
+  color: #211713;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Secondary button */
+.secondaryButton {
+  padding: 14px 24px;
+  border: 1px solid #6a5143;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #e7d7c5;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Hover effects */
+.primaryButton:hover {
+  background-color: #e0966c;
+}
+
+.secondaryButton:hover {
+  border-color: #55e6e0;
+  color: #55e6e0;
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+  .hero {
+    padding: 72px 20px;
+  }
+
+  .heroContent h1 {
+    font-size: 38px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .buttons {
+    flex-wrap: wrap;
+  }
+}
