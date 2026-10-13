@@ -28,6 +28,24 @@
   font-size: 14px;
 }
 
+.brandHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.brandHeader img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.brandHeader h3 {
+  margin: 0;
+}
+
+
 .links {
   display: flex;
   gap: 24px;
