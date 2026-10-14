@@ -1,0 +1,155 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: 28px 16px 18px;
+  background-color: #2a1d17;
+  border-right: 1px solid rgb(200 121 82 / 12%);
+  overflow-y: auto;
+}
+/* Brand */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px;
+  color: #e7d7c5;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.brand img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Navigation */
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 48px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #b9a99a;
+  font-size: 14px;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.navLink svg {
+  flex-shrink: 0;
+}
+
+.navLink:hover {
+  color: #e7d7c5;
+  background-color: rgb(200 121 82 / 7%);
+}
+
+.active {
+  color: #e0966c;
+  background-color: rgb(200 121 82 / 10%);
+  border-color: rgb(200 121 82 / 20%);
+}
+
+.active svg {
+  color: #e0966c;
+}
+
+/* Footer */
+
+.sidebarFooter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding: 18px 4px 0;
+  border-top: 1px solid rgb(200 121 82 / 15%);
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #594035;
+  color: #f0c3a4;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.userInfo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  gap: 2px;
+}
+
+.userName {
+  overflow: hidden;
+  color: #e7d7c5;
+  font-size: 13px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.userRole {
+  color: #b9a99a;
+  font-size: 10px;
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #b9a99a;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.logoutButton:hover {
+  color: #e0966c;
+  background-color: rgb(200 121 82 / 10%);
+}
+
+.logoutButton:focus-visible,
+.navLink:focus-visible,
+.brand:focus-visible {
+  outline: 2px solid #e0966c;
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
