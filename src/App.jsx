@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Projects from './pages/Projects';
 import Settings from './pages/Settings';
 import AppLayout from './layout/AppLayout';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
 
@@ -18,11 +19,14 @@ function App() {
 <Route path="/login" element={<Login />} />
 
   {/* Pages sharing the sidebar layout */}
+  {/* Protected pages */}
+  <Route element={<ProtectedRoute />}>
   <Route element={<AppLayout />}>
     <Route path="/dashboard" element={<Dashboard />} />
     <Route path="/projects" element={<Projects />} />
     <Route path="/settings" element={<Settings />} />
     <Route path="/create-project" element={<CreateProject />} />
+    </Route>
   </Route>
 </Routes>
   )

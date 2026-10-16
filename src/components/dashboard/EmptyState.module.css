@@ -1,0 +1,88 @@
+.emptyState {
+	display: grid;
+	min-height: 100%;
+	place-items: center;
+	padding: 48px 20px;
+	text-align: center;
+}
+
+.content {
+	display: flex;
+	width: min(100%, 560px);
+	flex-direction: column;
+	align-items: center;
+}
+
+.icon {
+	display: block;
+	width: 112px;
+	height: 112px;
+	margin-bottom: 28px;
+	object-fit: contain;
+	filter: drop-shadow(0 0 18px rgb(224 150 108 / 32%));
+}
+
+.headline {
+	color: #e7d7c5;
+	font-family: var(--font-heading);
+	font-size: clamp(30px, 4vw, 42px);
+	font-weight: 500;
+	line-height: 1.2;
+}
+
+.headline span {
+	color: #e0966c;
+	font-weight: 700;
+}
+
+.description {
+	margin-top: 14px;
+	color: #b9a99a;
+	font-size: 15px;
+}
+
+.createButton {
+	display: inline-flex;
+	min-height: 48px;
+	align-items: center;
+	justify-content: center;
+	gap: 9px;
+	margin-top: 28px;
+	padding: 0 20px;
+	border: 1px solid #e0966c;
+	border-radius: 6px;
+	background-color: #c87952;
+	color: #211713;
+	font-size: 14px;
+	font-weight: 650;
+	text-decoration: none;
+	transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.createButton:hover {
+	transform: translateY(-1px);
+	background-color: #e0966c;
+}
+
+.createButton:focus-visible {
+	outline: 2px solid #e7d7c5;
+	outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+	.brain {
+		width: 96px;
+		height: 96px;
+		margin-bottom: 22px;
+	}
+
+	.description {
+		max-width: 290px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.createButton {
+		transition: none;
+	}
+}

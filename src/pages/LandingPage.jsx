@@ -1,8 +1,8 @@
-import NavBar from "../components/NavBar";
-import Hero from "../components/Hero";
-import ProblemAndFeatures from "../components/ProblemAndFeatures";
-import CTASection from "../components/CTASection";
-import Footer from "../components/Footer";
+import NavBar from "../components/landingPage/NavBar";
+import Hero from "../components/landingPage/Hero";
+import ProblemAndFeatures from "../components/landingPage/ProblemAndFeatures";
+import CTASection from "../components/landingPage/CTASection";
+import Footer from "../components/landingPage/Footer";
 
 function LandingPage() {
   return (

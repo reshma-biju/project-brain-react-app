@@ -1,0 +1,9 @@
+.icon {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+    color: var(--glow);
+  filter: drop-shadow(0 0 5px var(--glow));
+}
+

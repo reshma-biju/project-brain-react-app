@@ -7,7 +7,7 @@ import AuthContext from "../context/AuthContext";
 import styles from "./Login.module.css";
 
 function Login() {
-  const [isLoggedIn, setisLoggedIn] = useContext(AuthContext);
+ const { user, setUser, isLoggedIn } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -112,7 +112,7 @@ function Login() {
     }
 
     // Temporary demo only: no real authentication yet.
-    setisLoggedIn(true);
+    setUser({ id: "u1", name: "Reshma", email: email })
     toast.success("Login successful!");
     navigate("/dashboard");
   }
