@@ -1,0 +1,87 @@
+.card {
+	position: relative;
+	display: flex;
+	min-height: 82px;
+	align-items: center;
+	overflow: hidden;
+	 isolation: isolate;
+	padding: 12px 14px;
+	border: 1px solid rgba(224, 150, 108, 0.22);
+	border-radius: 8px;
+	background: linear-gradient(135deg, #342720, #2e241f 72%);
+}
+
+.content {
+	position: relative;
+	z-index: 1;
+	min-width: 0;
+}
+
+.topRow {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.iconBadge {
+	display: grid;
+	width: 34px;
+	height: 34px;
+	flex: 0 0 34px;
+	place-items: center;
+	border-radius: 50%;
+	background: color-mix(in srgb, var(--accent) 13%, #2e241f);
+	color: var(--accent);
+}
+
+.value {
+	margin: 0;
+	color: #f2e7dc;
+	font-size: 1.25rem;
+	font-weight: 650;
+	line-height: 1;
+}
+
+.label {
+	margin: 5px 0 0 44px;
+	color: #c6a991;
+	font-size: 0.75rem;
+	line-height: 1.2;
+}
+
+.amber {
+	--accent: #e89a62;
+}
+
+.teal {
+	--accent: #68c8bd;
+}
+
+.coral {
+	--accent: #f18e68;
+}
+
+.sage {
+	--accent: #89c99a;
+}
+
+/* Keep the small card treatment legible at narrow widths. */
+@media (max-width: 420px) {
+	.card {
+		padding: 10px;
+	}
+
+	.topRow {
+		gap: 7px;
+	}
+
+	.iconBadge {
+		width: 30px;
+		height: 30px;
+		flex-basis: 30px;
+	}
+
+	.label {
+		margin-left: 37px;
+	}
+}

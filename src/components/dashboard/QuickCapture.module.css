@@ -1,0 +1,102 @@
+.card {
+	width: 100%;
+	margin: 20px 0 24px;
+	padding: 14px;
+	border: 1px solid #5a3a2c;
+	border-radius: 12px;
+	background: #2b221e;
+}
+
+.label {
+	margin: 0 0 10px;
+	color: #9b8573;
+	font-size: 0.85rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.form {
+	display: grid;
+	width: 100%;
+	grid-template-columns: minmax(180px, 1fr) auto auto auto;
+	gap: 10px;
+	margin: 0;
+}
+
+.titleInput,
+.select {
+	min-width: 0;
+	min-height: 42px;
+	padding: 0 12px;
+	border: 1px solid #4a3328;
+	border-radius: 8px;
+	background: #1f1713;
+	color: #f0e2d0;
+	font: inherit;
+	outline: none;
+}
+
+.select {
+	color-scheme: dark;
+}
+
+.select option {
+	background: #1f1713;
+	color: #f0e2d0;
+}
+
+.select option:checked {
+	background: #c87952;
+	color: #211713;
+}
+
+.select option:hover {
+	background: #c87952;
+	color: #211713;
+}
+
+.titleInput:focus,
+.select:focus {
+	border-color: #c87952;
+	box-shadow: 0 0 0 3px rgba(200, 121, 82, 0.2);
+}
+
+.titleInput::placeholder {
+	color: #9b8573;
+}
+
+.captureButton {
+	min-height: 42px;
+	padding: 0 18px;
+	border: 1px solid #c87952;
+	border-radius: 8px;
+	background: #c87952;
+	color: #211713;
+	font: inherit;
+	font-weight: 650;
+	cursor: pointer;
+}
+
+.captureButton:hover:not(:disabled) {
+	filter: brightness(1.1);
+}
+
+.captureButton:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+	.form {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.titleInput {
+		grid-column: 1 / -1;
+	}
+
+	.captureButton {
+		grid-column: 1 / -1;
+	}
+}

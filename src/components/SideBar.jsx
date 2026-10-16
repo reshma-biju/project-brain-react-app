@@ -12,10 +12,10 @@ import styles from "./SideBar.module.css";
 
 function Sidebar() {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useContext(AuthContext);
+  const { user, setUser, isLoggedIn } = useContext(AuthContext);
 
   function handleLogout() {
-    setIsLoggedIn(false);
+    setUser(null);
     navigate("/login");
   }
 
@@ -68,10 +68,10 @@ function Sidebar() {
 
       {/* User profile and logout */}
       <div className={styles.sidebarFooter}>
-        <div className={styles.avatar}>R</div>
+        <div className={styles.avatar}>{user.name[0]}</div>
 
         <div className={styles.userInfo}>
-          <span className={styles.userName}>Reshma</span>
+          <span className={styles.userName}>{user.name}</span>
           <span className={styles.userRole}>Personal workspace</span>
         </div>
 

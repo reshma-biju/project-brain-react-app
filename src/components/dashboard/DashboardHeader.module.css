@@ -1,0 +1,41 @@
+.outerContainer {
+    display: flex;
+   justify-content: space-between;
+    align-items: center;
+     width: 100%;
+     margin-bottom: 24px;
+}
+.greeting {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 600;
+  color: #e7d7c5;
+}
+.greeting span { color: #e0966c; }   /* the name in amber */
+.createButton {
+	display: inline-flex;
+	min-height: 48px;
+	align-items: center;
+	justify-content: center;
+	gap: 9px;
+	padding: 0 20px;
+	border: 1px solid #e0966c;
+	border-radius: 6px;
+	background-color: #c87952;
+	color: #211713;
+	font-size: 14px;
+	font-weight: 650;
+	text-decoration: none;
+	transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.createButton:hover {
+	transform: translateY(-1px);
+	background-color: #e0966c;
+}
+
+.createButton:focus-visible {
+	outline: 2px solid #e7d7c5;
+	outline-offset: 3px;
+}

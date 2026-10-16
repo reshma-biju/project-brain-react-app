@@ -1,0 +1,28 @@
+.card {
+	min-width: 0;
+	padding: 20px;
+	border: 1px solid rgba(224, 150, 108, 0.28);
+	border-radius: 8px;
+	background-color: #2e241f;
+}
+
+.heading {
+	margin: 0 0 8px;
+	color: #e0966c;
+	font-family: var(--font-heading);
+	font-size: 1.125rem;
+	font-weight: 500;
+}
+
+.list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.empty {
+	margin: 0;
+	padding: 13px 0;
+	color: #c6a991;
+	font-size: 0.9rem;
+}

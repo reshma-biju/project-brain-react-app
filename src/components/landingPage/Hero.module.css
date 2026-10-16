@@ -1,6 +1,8 @@
 
 .hero {
-  padding: 100px 24px;
+  padding: 40px 24px;
+  position: relative;      /* the glow positions itself inside this */
+  overflow: hidden;        /* the drifting image never spills out */
   text-align: center;
     background:
     radial-gradient(
@@ -11,9 +13,20 @@
     #211713;
 }
 
+.inner {
+  position: relative;
+  z-index: 1;              /* content above the glow */
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 64px 48px;
+}
+
 .heroContent {
   max-width: 800px;
   margin: 0 auto;
+  text-align: left;        /* was centered */
 }
 
 /* Small introductory label */
@@ -47,8 +60,8 @@
 /* Button container */
 .buttons {
   display: flex;
-  justify-content: center;
   gap: 16px;
+  justify-content: flex-start;   /* was center, if you had it */
 }
 
 /* Primary button */
@@ -88,7 +101,7 @@
 }
 
 /* Smaller screens */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .hero {
     padding: 72px 20px;
   }
@@ -96,6 +109,7 @@
   .heroContent h1 {
     font-size: 38px;
   }
+  .inner { grid-template-columns: 1fr; }
 
   .description {
     font-size: 16px;

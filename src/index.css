@@ -8,6 +8,8 @@
 /* Global page styles */
 html {
   scroll-behavior: smooth;
+    overscroll-behavior: none;
+
 }
 
 :root {
@@ -20,7 +22,7 @@ body {
   background-color: #211713;
   color: #e7d7c5;
   line-height: 1.6;
-  overflow: hidden;
+
 }
 
 /* Prevent unexpected horizontal overflow */

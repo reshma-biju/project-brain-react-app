@@ -1,0 +1,42 @@
+.row {
+	display: flex;
+	min-width: 0;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 13px 0;
+	border-bottom: 1px solid rgba(224, 150, 108, 0.16);
+}
+
+.row:last-child {
+	border-bottom: 0;
+}
+
+.item {
+	display: flex;
+	min-width: 0;
+	align-items: center;
+	gap: 10px;
+}
+
+.item > span:first-child {
+	flex: 0 0 auto;
+	font-size: 1.1rem;
+}
+
+.title {
+	overflow: hidden;
+	color: #e7d7c5;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.project {
+	flex: 0 0 auto;
+	max-width: 42%;
+	overflow: hidden;
+	color: #c6a991;
+	font-size: 0.8125rem;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
