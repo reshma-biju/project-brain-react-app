@@ -4,8 +4,8 @@
   height: 100vh;
   box-sizing: border-box;
   padding: 28px 16px 18px;
-  background-color: #2a1d17;
-  border-right: 1px solid rgb(200 121 82 / 12%);
+  background-color: var(--color-sidebar);
+  border-right: 1px solid rgb(217 144 101 / 12%);
   overflow:hidden;
 }
 /* Brand */
@@ -15,7 +15,7 @@
   align-items: center;
   gap: 10px;
   padding: 0 8px;
-  color: #e7d7c5;
+  color: var(--color-text);
   font-family: var(--font-heading);
   font-size: 20px;
   font-weight: 600;
@@ -44,7 +44,7 @@
   padding: 12px;
   border: 1px solid transparent;
   border-radius: 8px;
-  color: #b9a99a;
+  color: var(--color-text-muted);
   font-size: 14px;
   text-decoration: none;
   transition:
@@ -58,18 +58,18 @@
 }
 
 .navLink:hover {
-  color: #e7d7c5;
-  background-color: rgb(200 121 82 / 7%);
+  color: var(--color-text);
+  background-color: rgb(217 144 101 / 7%);
 }
 
 .active {
-  color: #e0966c;
-  background-color: rgb(200 121 82 / 10%);
-  border-color: rgb(200 121 82 / 20%);
+  color: var(--color-accent);
+  background-color: rgb(217 144 101 / 10%);
+  border-color: rgb(217 144 101 / 20%);
 }
 
 .active svg {
-  color: #e0966c;
+  color: var(--color-accent);
 }
 
 /* Footer */
@@ -80,7 +80,7 @@
   gap: 10px;
   margin-top: auto;
   padding: 18px 4px 0;
-  border-top: 1px solid rgb(200 121 82 / 15%);
+  border-top: 1px solid rgb(217 144 101 / 15%);
 }
 
 .avatar {
@@ -91,7 +91,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: #594035;
+  background-color: #493328;
   color: #f0c3a4;
   font-size: 14px;
   font-weight: 600;
@@ -107,7 +107,7 @@
 
 .userName {
   overflow: hidden;
-  color: #e7d7c5;
+  color: var(--color-text);
   font-size: 13px;
   font-weight: 500;
   text-overflow: ellipsis;
@@ -115,7 +115,7 @@
 }
 
 .userRole {
-  color: #b9a99a;
+  color: var(--color-text-muted);
   font-size: 10px;
 }
 
@@ -128,7 +128,7 @@
   border: none;
   border-radius: 6px;
   background: transparent;
-  color: #b9a99a;
+  color: var(--color-text-muted);
   cursor: pointer;
   transition:
     color 0.2s ease,
@@ -136,14 +136,14 @@
 }
 
 .logoutButton:hover {
-  color: #e0966c;
-  background-color: rgb(200 121 82 / 10%);
+  color: var(--color-accent);
+  background-color: rgb(217 144 101 / 10%);
 }
 
 .logoutButton:focus-visible,
 .navLink:focus-visible,
 .brand:focus-visible {
-  outline: 2px solid #e0966c;
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
 

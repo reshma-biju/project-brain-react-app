@@ -2,11 +2,11 @@ import styles from "./StatsCard.module.css";
 
 const StatsCard = ({ label, value, icon: Icon, tone }) => {
     return (
-        <article className={`${styles.card} ${styles[tone]}`}>
-            <div className={styles.content}>
+        <article className={`${styles.stat} ${styles[tone]}`}>
+            <div>
                 <div className={styles.topRow}>
-                    <span className={styles.iconBadge}>
-                        <Icon size={19} strokeWidth={2} aria-hidden="true" />
+                    <span className={styles.icon}>
+                        <Icon size={16} strokeWidth={2} aria-hidden="true" />
                     </span>
                     <p className={styles.value}>{value}</p>
                 </div>

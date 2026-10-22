@@ -4,8 +4,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 32px;
-  background-color: #211713;
-  border-bottom: 1px solid #49352b;
+  background-color: var(--color-page);
+  border-bottom: 1px solid var(--color-border);
 }
 
 
@@ -23,7 +23,7 @@
 }
 
 .logo h2 {
-  color: #e7d7c5;
+  color: var(--color-text);
   font-family: var(--font-heading);
   font-size: 25px;
   font-weight: 600;
@@ -36,12 +36,12 @@
 }
 
 .links a {
-  color: #c8b6a5;
+  color: var(--color-text-muted);
   text-decoration: none;
 }
 
 .links a:hover {
-  color: #55e6e0;
+  color: var(--color-teal);
 }
 
 .actions {
@@ -51,16 +51,16 @@
 
 .actions button {
   padding: 10px 16px;
-  border: 1px solid #c87952;
+  border: 1px solid var(--color-accent);
   border-radius: 8px;
   background-color: transparent;
-  color: #e7d7c5;
+  color: var(--color-text);
   cursor: pointer;
 }
 
 .actions button:last-child {
-  background-color: #c87952;
-  color: #211713;
+  background-color: var(--color-accent);
+  color: var(--color-input);
 }
 
 
@@ -103,7 +103,7 @@
     width: 100%;
     justify-content: center;
     padding-top: 8px;
-    border-top: 1px solid #49352b;
+    border-top: 1px solid var(--color-border);
   }
 
   .actions {

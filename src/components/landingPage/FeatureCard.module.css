@@ -2,8 +2,8 @@
 .card {
   padding: 28px 24px;
   text-align: left;
-  background-color: #35241f;
-  border: 1px solid #49352b;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 14px;
 
   transition:
@@ -20,32 +20,32 @@
   justify-content: center;
 
   margin-bottom: 22px;
-  color: #c87952;
-  background-color: rgba(200, 121, 82, 0.1);
-  border: 1px solid rgba(200, 121, 82, 0.3);
+  color: var(--color-accent);
+  background-color: rgb(217 144 101 / 10%);
+  border: 1px solid rgb(217 144 101 / 30%);
   border-radius: 12px;
 }
 
 .card h3 {
-  color: #e7d7c5;
+  color: var(--color-text);
   font-family: var(--font-heading);
   font-size: 23px;
   margin-bottom: 12px;
 }
 
 .card p {
-  color: #b9a99a;
+  color: var(--color-text-muted);
   font-size: 15px;
   line-height: 1.8;
 }
 
 .card:hover {
-  border-color: #55a9a2;
-  background-color: #3b2922;
+  border-color: var(--color-teal);
+  background-color: var(--color-surface-raised);
   transform: translateY(-3px);
 }
 
 .card:hover .iconBox {
-  color: #55e6e0;
-  border-color: rgba(85, 230, 224, 0.4);
+  color: var(--color-teal);
+  border-color: rgb(98 197 184 / 40%);
 }

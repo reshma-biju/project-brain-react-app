@@ -1,0 +1,43 @@
+/*/Pinned: solid gold star with glow */
+.pinned {
+  flex: 0 0 auto;
+  color: #f5c451;
+  filter: drop-shadow(0 0 6px rgb(245 196 81 / 65%));
+}
+
+/* Not pinned: muted outline */
+.unpinned {
+  flex: 0 0 auto;
+  color: #b9a99a;
+}
+
+/* Interactive version: reset the browser's default button look */
+.button {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.button:hover {
+  background: rgb(245 196 81 / 10%);
+}
+
+.button:hover .unpinned {
+  color: #f5c451;               /* hint: this is what pinning will look like */
+}
+
+.button:active {
+  transform: scale(0.92);
+}
+
+.button:focus-visible {
+  outline: 2px solid #e0966c;
+  outline-offset: 2px;
+}

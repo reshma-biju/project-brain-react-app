@@ -7,7 +7,7 @@ import AuthContext from "../context/AuthContext";
 import styles from "./Login.module.css";
 
 function Login() {
- const { user, setUser, isLoggedIn } = useContext(AuthContext);
+ const { setUser } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

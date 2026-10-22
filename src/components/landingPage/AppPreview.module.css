@@ -8,23 +8,23 @@
   background-size: 100% 100%;  /* stretch the framing wires around the window */
   background-repeat: no-repeat;
   mix-blend-mode: screen;      /* dark background disappears, only wires show */
-  opacity: 0.9;
+  opacity: 0.35;
   pointer-events: none;
   z-index: 0;
   animation: sway 18s ease-in-out infinite alternate;
 }
 
 .window {
-  border: 1px solid #5a3a2c;
+  border: 1px solid var(--color-border);
    position: relative;
   z-index: 1; 
   border-radius: 14px;
   overflow: hidden;
-  background: #21160f;
+  background: var(--color-input);
   /* teal + terracotta glow around the window */
   box-shadow:
-    0 0 60px rgba(45, 212, 207, 0.18),
-    0 0 120px rgba(200, 121, 79, 0.18),
+    0 0 60px rgb(98 197 184 / 12%),
+    0 0 120px rgb(217 144 101 / 12%),
     0 30px 80px rgba(0, 0, 0, 0.5);
 }
 
@@ -33,7 +33,7 @@
   gap: 7px;
   padding: 10px 14px;
   background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid #3a2a21;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .bar span { width: 10px; height: 10px; border-radius: 50%; }

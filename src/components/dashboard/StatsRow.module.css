@@ -1,12 +1,17 @@
 .row {
-	display: grid;
+	display: flex;
 	width: 100%;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 16px;
+	align-items: stretch;
+	margin-bottom: 40px;
+	padding: 16px 8px;
+	border: 1px solid rgb(224 150 108 / 14%);
+	border-radius: 14px;
+	background: rgb(255 235 215 / 3%);
 }
 
 @media (max-width: 700px) {
 	.row {
-		grid-template-columns: repeat(2, 1fr);
+		flex-wrap: wrap;
+		padding: 8px;
 	}
 }

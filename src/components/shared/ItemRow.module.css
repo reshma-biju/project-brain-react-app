@@ -5,7 +5,7 @@
 	justify-content: space-between;
 	gap: 16px;
 	padding: 13px 0;
-	border-bottom: 1px solid rgba(224, 150, 108, 0.16);
+	border-bottom: 1px solid rgb(217 144 101 / 16%);
 }
 
 .row:last-child {
@@ -26,7 +26,7 @@
 
 .title {
 	overflow: hidden;
-	color: #e7d7c5;
+	color: var(--color-text);
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
@@ -35,7 +35,7 @@
 	flex: 0 0 auto;
 	max-width: 42%;
 	overflow: hidden;
-	color: #c6a991;
+	color: var(--color-text-muted);
 	font-size: 0.8125rem;
 	text-overflow: ellipsis;
 	white-space: nowrap;
