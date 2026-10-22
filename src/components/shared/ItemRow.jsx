@@ -1,10 +1,6 @@
 import TypeIcon from "./TypeIcon";
 import styles from "./ItemRow.module.css";
-
-const formatDate = (date) => new Date(`${date}T00:00:00`).toLocaleDateString("en-US", {
-	month: "short",
-	day: "numeric",
-});
+import { formatDate } from "../../utils/formatDate";
 
 const ItemRow = ({ item }) => (
 	<li className={styles.row}>

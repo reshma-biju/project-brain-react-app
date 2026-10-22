@@ -9,6 +9,7 @@ import Projects from './pages/Projects';
 import Settings from './pages/Settings';
 import AppLayout from './layout/AppLayout';
 import ProtectedRoute from './components/ProtectedRoute';
+import ProjectDetail from "./pages/ProjectDetail";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
   <Route element={<AppLayout />}>
     <Route path="/dashboard" element={<Dashboard />} />
     <Route path="/projects" element={<Projects />} />
+    <Route path="/projects/:id" element={<ProjectDetail />} />
     <Route path="/settings" element={<Settings />} />
     <Route path="/create-project" element={<CreateProject />} />
     </Route>

@@ -7,10 +7,10 @@
     background:
     radial-gradient(
       ellipse at 50% 15%,
-      rgba(200, 121, 82, 0.12),
+      rgb(217 144 101 / 10%),
       transparent 60%
     ),
-    #211713;
+    var(--color-page);
 }
 
 .inner {
@@ -31,7 +31,7 @@
 
 /* Small introductory label */
 .label {
-  color: #55e6e0;
+  color: var(--color-teal);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 2px;
@@ -44,7 +44,7 @@
   font-size: 56px;
   font-weight: 600;
   line-height: 1.15;
-  color: #e7d7c5;
+  color: var(--color-text);
   margin-bottom: 24px;
 }
 
@@ -52,7 +52,7 @@
 .description {
   max-width: 600px;
   margin: 0 auto 32px;
-  color: #b9a99a;
+  color: var(--color-text-muted);
   font-size: 18px;
   line-height: 1.8;
 }
@@ -67,10 +67,10 @@
 /* Primary button */
 .primaryButton {
   padding: 14px 24px;
-  border: 1px solid #c87952;
+  border: 1px solid var(--color-accent);
   border-radius: 8px;
-  background-color: #c87952;
-  color: #211713;
+  background-color: var(--color-accent);
+  color: var(--color-input);
   font-family: var(--font-body);
   font-size: 15px;
   font-weight: 600;
@@ -80,10 +80,10 @@
 /* Secondary button */
 .secondaryButton {
   padding: 14px 24px;
-  border: 1px solid #6a5143;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   background-color: transparent;
-  color: #e7d7c5;
+  color: var(--color-text);
   font-family: var(--font-body);
   font-size: 15px;
   font-weight: 500;
@@ -92,12 +92,12 @@
 
 /* Hover effects */
 .primaryButton:hover {
-  background-color: #e0966c;
+  background-color: #e0a078;
 }
 
 .secondaryButton:hover {
-  border-color: #55e6e0;
-  color: #55e6e0;
+  border-color: var(--color-teal);
+  color: var(--color-teal);
 }
 
 /* Smaller screens */

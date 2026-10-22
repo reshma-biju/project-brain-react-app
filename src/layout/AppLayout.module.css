@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 240px minmax(0, 1fr);
   height: 100vh;
-  background-color: #211713;
+  background-color: var(--color-page);
   
 }
 

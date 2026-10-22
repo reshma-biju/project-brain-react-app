@@ -1,8 +1,8 @@
 
 .footer {
   padding: 40px 24px 20px;
- background-color: #1a120f;
-  border-top: 1px solid #49352b;
+  background-color: var(--color-page);
+  border-top: 1px solid var(--color-border);
 }
 
 .content {
@@ -17,14 +17,14 @@
 }
 
 .brand h3 {
-  color: #e7d7c5;
+  color: var(--color-text);
   font-family: var(--font-heading);
   font-size: 22px;
   margin-bottom: 6px;
 }
 
 .brand p {
-  color: #a99a8b;
+  color: var(--color-text-muted);
   font-size: 14px;
 }
 
@@ -52,25 +52,25 @@
 }
 
 .links a {
-  color: #b9a99a;
+  color: var(--color-text-muted);
   font-size: 14px;
   text-decoration: none;
   transition: color 0.25s ease;
 }
 
 .links a:hover {
-  color: #55e6e0;
+  color: var(--color-teal);
 }
 
 .bottom {
   max-width: 1100px;
   margin: 0 auto;
   padding-top: 20px;
-  border-top: 1px solid #35241f;
+  border-top: 1px solid var(--color-surface);
 }
 
 .bottom p {
-  color: #8f8073;
+  color: var(--color-text-muted);
   font-size: 13px;
 }
 

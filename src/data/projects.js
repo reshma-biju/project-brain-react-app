@@ -48,7 +48,7 @@ export const projects = [
     id: "p2",
     name: "AI Study Planner",
     description: "Weekly learning roadmap with task tracking",
-    category: "AI Chatbot",
+    category: "AI / Chatbot",
     pinned: false,
     createdAt: "2026-10-05",
     updatedAt: "2026-10-13",

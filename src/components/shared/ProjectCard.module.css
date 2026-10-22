@@ -4,9 +4,10 @@
 	flex-direction: column;
 	gap: 20px;
 	padding: 18px;
-	border: 1px solid rgba(224, 150, 108, 0.28);
-	border-radius: 8px;
-	background-color: #2e241f;
+	border: 1px solid rgb(217 144 101 / 38%);
+	border-left: 3px solid var(--color-accent);
+	border-radius: 2px 12px 2px 12px;
+	background: var(--color-card-gradient);
 }
 
 .titleRow {
@@ -19,7 +20,7 @@
 
 .name {
 	min-width: 0;
-	color: #e7d7c5;
+	color: var(--color-text);
 	font-size: 1rem;
 	font-weight: 600;
 	line-height: 1.4;
@@ -40,7 +41,7 @@
 
 .percentage {
 	flex: 0 0 3ch;
-	color: #c6a991;
+	color: var(--color-text-muted);
 	font-size: 0.8125rem;
 	font-variant-numeric: tabular-nums;
 	text-align: right;

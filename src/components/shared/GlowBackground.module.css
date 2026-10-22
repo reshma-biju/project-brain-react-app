@@ -16,7 +16,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.6;
+  opacity: 0.3;
   mix-blend-mode: screen;   /* the dark brown disappears, only the glow stays */
   will-change: transform;
   animation: drift 20s ease-in-out infinite alternate;

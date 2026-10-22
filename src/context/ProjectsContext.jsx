@@ -43,12 +43,16 @@ const [projectList, setProjectList] = useState(sampleProjects);
     );
   };
 
+  //logic to pin and unpin proj
+  const togglePin = (id) =>
+  setProjectList((prev) => prev.map((p) => (p.id === id ? { ...p, pinned: !p.pinned } : p)));
+
   // temporary dev helpers (delete later)
   const clearProjects = () => setProjectList([]);
   const resetProjects = () => setProjectList(sampleProjects);
 
   return (
-    <ProjectsContext.Provider value={{ projectList, addProject, addItem, clearProjects, resetProjects }}>
+    <ProjectsContext.Provider value={{ projectList, addProject, addItem, clearProjects, resetProjects, togglePin }}>
       {children}
     </ProjectsContext.Provider>
   );

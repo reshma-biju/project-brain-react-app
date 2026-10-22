@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Brain } from "lucide-react";
 import styles from "./QuickCapture.module.css";
 
 const itemTypes = ["idea", "bug", "research", "refactor", "feature"];
@@ -18,7 +19,8 @@ const QuickCapture = ({ projects, onCapture }) => {
 
     return (
         <section className={styles.card} aria-labelledby="quick-capture-heading">
-            <h2 className={styles.label} id="quick-capture-heading">Quick capture</h2>
+            <h2 className={styles.label} id="quick-capture-heading">Capture a thought</h2>
+            <p className={styles.description}>Ideas come anytime. Save it before it's gone.</p>
             <form className={styles.form} onSubmit={handleSubmit} aria-labelledby="quick-capture-heading">
             <input
                 className={styles.titleInput}
@@ -53,7 +55,8 @@ const QuickCapture = ({ projects, onCapture }) => {
                 ))}
             </select>
             <button className={styles.captureButton} type="submit" disabled={!title.trim()}>
-                Capture
+                <Brain size={16} strokeWidth={2.1} aria-hidden="true" />
+                <span>Capture</span>
             </button>
             </form>
         </section>
