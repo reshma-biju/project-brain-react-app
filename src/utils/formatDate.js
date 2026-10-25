@@ -1,4 +1,4 @@
-export function formatDate(date) {
+export function formatDate(date, options = {}) {
 	if (!date) return "";
 
 	const parsedDate = date instanceof Date
@@ -10,5 +10,6 @@ export function formatDate(date) {
 	return parsedDate.toLocaleDateString("en-US", {
 		month: "short",
 		day: "numeric",
+		...(options.year && { year: "numeric" }),
 	});
 }
