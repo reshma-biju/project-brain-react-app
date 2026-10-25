@@ -1,0 +1,77 @@
+.detailPage {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	margin-top: -10px;
+}
+
+.projectCard {
+	padding: 20px 14px 14px;
+	border: 1px solid rgb(217 144 101 / 24%);
+	border-radius: 12px;
+	background: var(--color-card-gradient);
+	box-shadow: inset 0 1px 0 rgb(255 255 255 / 4%);
+}
+
+.backLink {
+	display: inline-flex;
+	width: fit-content;
+	align-items: center;
+	gap: 8px;
+	color: var(--color-text-muted);
+	font-size: 14px;
+	text-decoration: none;
+}
+
+.backLink:hover {
+	color: var(--color-accent);
+}
+
+.backLink:focus-visible,
+.backButton:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 3px;
+}
+
+.notFound {
+	display: flex;
+	min-height: 50vh;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	padding: 32px 20px;
+	text-align: center;
+}
+
+.notFoundTitle {
+	color: var(--color-text);
+	font-family: var(--font-heading);
+	font-size: 26px;
+	font-weight: 600;
+}
+
+.notFoundMessage {
+	color: var(--color-text-muted);
+}
+
+.backButton {
+	display: inline-flex;
+	min-height: 42px;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin-top: 8px;
+	padding: 0 15px;
+	border: 1px solid var(--color-accent);
+	border-radius: 6px;
+	background: var(--color-accent);
+	color: var(--color-input);
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.backButton:hover {
+	background: #e0a078;
+}

@@ -5,8 +5,8 @@ import StatsCard from "./StatsCard";
 
 const StatsRow = ({ stats }) => {
     const cards = [
-        { label: "Projects", value: stats.projects, icon: Folder, tone: "amber" },
-        { label: "Captured items", value: stats.captured, icon: Lightbulb, tone: "teal" },
+        { label: "Projects", value: stats.projects, icon: Folder, tone: "teal" },
+        { label: "Captured items", value: stats.captured, icon: Lightbulb, tone: "amber" },
         { label: "In Progress", value: stats.inProgress, icon: LoaderCircle, tone: "coral" },
         { label: "Completed", value: stats.done, icon: Check, tone: "sage" },
     ];

@@ -4,36 +4,27 @@ import {
     List,
     MoreVertical
 } from "lucide-react";
-import { categoryStyles } from "../../constants/categories";
 import { getProgress } from "../../utils/getProgress";
 import { formatDate } from "../../utils/formatDate";
 import styles from "./ProjectListCard.module.css";
 import ProgressBar from "../shared/ProgressBar";
 import PinStar from "../shared/PinStar";
 import { Link } from "react-router-dom";
-
-const CategoryPill = ({ category, color }) => (
-    <span className={styles.category} style={{ "--category-color": color }}>
-        {category}
-    </span>
-);
+import CategoryPill from "../shared/CategoryPill";
+import CategoryIcon from "../shared/CategoryIcon";
 
 const ProjectListCard = ({ project, onTogglePin}) => {
-    const { Icon, color } = categoryStyles[project.category] ?? categoryStyles.default;
-    // above line look up by key: categoryStyles["Web App"] → { Icon: FolderOpen, color: e0966c" } if that lookup found nothing (undefined), use the fallback entry and destructuring: pull the two fields out into variables Icon, color
+    //const { Icon, color } = categoryStyles[project.category] ?? categoryStyles.default;
+    //old code now moved to category icon compo- above line look up by key: categoryStyles["Web App"] → { Icon: FolderOpen, color: e0966c" } if that lookup found nothing (undefined), use the fallback entry and destructuring: pull the two fields out into variables Icon, color
+    //const { color } = categoryStyles[project.category] ?? categoryStyles.default;
+
     const progress = getProgress(project);
     const itemCount = project.items.length;
 
     return (
         <article className={styles.card}>
             <div className={styles.topRow}>
-                <span
-                    className={styles.categoryIcon}
-                    style={{ "--category-color": color }}
-                    aria-hidden="true"
-                >
-                    <Icon size={26} strokeWidth={1.8} />
-                </span>
+                <CategoryIcon category={project.category} />
                 <div className={styles.actions}>
                    <PinStar pinned={project.pinned} onToggle={onTogglePin} />
                     <button className={styles.menuButton} type="button" aria-label="More project actions">
@@ -43,7 +34,7 @@ const ProjectListCard = ({ project, onTogglePin}) => {
             </div>
 
             <h3 className={styles.name}>{project.name}</h3>
-            <CategoryPill category={project.category} color={color} />
+            <CategoryPill category={project.category} />
 
             {project.description && (
                 <p className={styles.description}>{project.description}</p>
