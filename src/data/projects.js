@@ -36,13 +36,47 @@ export const projects = [
         updatedAt: "2026-10-09",
       },
     ],
-    notes: [
-      {
-        id: "n1",
-        text: "Learn React Router first",
-        createdAt: "2026-10-08",
-      },
-    ],
+   notes: [
+  {
+    id: "n1",
+    title: "React Router setup",
+    body: `Learn React Router first. Use the Vite setup for the project.
+
+- Understand nested routes
+- Set up basic routing structure
+- Create separate pages for Home, Projects and About
+- Use protected routes later
+
+Useful links:
+React Router docs: https://reactrouter.com
+Tutorial video: https://youtube.com`,
+    createdAt: "2026-10-08T09:30:00.000Z",
+    updatedAt: "2026-10-08T09:30:00.000Z",
+  },
+  {
+    id: "n2",
+    title: "Design inspiration",
+    body: `Collect UI references for the hero section.
+
+Look at dark themes with a warm accent color. Glass cards with a soft glow look good, and thin neural-style wires add some personality without being busy.`,
+    createdAt: "2026-10-05T14:10:00.000Z",
+    updatedAt: "2026-10-05T14:10:00.000Z",
+  },
+  {
+    id: "n3",
+    title: "Deployment notes",
+    body: `Steps to deploy on Vercel:
+
+1. Push the project to GitHub
+2. Import the repo in Vercel
+3. Build command: npm run build
+4. Output directory: dist
+
+Remember to add a rewrite so that refreshing /projects doesn't give a 404.`,
+    createdAt: "2026-10-01T18:45:00.000Z",
+    updatedAt: "2026-10-01T18:45:00.000Z",
+  },
+],
   },
   {
     id: "p2",

@@ -25,22 +25,25 @@ const ProjectSummary = ({ project }) => {
                 </div>
             </div>
             <div className={styles.stats}>
-                {STATS.map(({ label, status, color, icon: Icon }) => (
-                     const value = project.items.filter((item) => item.status === status).length;
-                    <div
-                        className={styles.stat}
-                        key={status}
-                        style={{ "--stat-color": color }}
-                    >
-                        <div className={styles.statValue}>
-                            <span className={styles.statIcon}>
-                                <Icon size={14} strokeWidth={2} aria-hidden="true" />
-                            </span>
-                            <span>{value}</span>
+                {STATS.map(({ label, status, color, icon: Icon }) => {
+                    const value = project.items.filter((item) => item.status === status).length;
+
+                    return (
+                        <div
+                            className={styles.stat}
+                            key={status}
+                            style={{ "--stat-color": color }}
+                        >
+                            <div className={styles.statValue}>
+                                <span className={styles.statIcon}>
+                                    <Icon size={14} strokeWidth={2} aria-hidden="true" />
+                                </span>
+                                <span>{value}</span>
+                            </div>
+                            <span className={styles.statLabel}>{label}</span>
                         </div>
-                        <span className={styles.statLabel}>{label}</span>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         </section>
     );

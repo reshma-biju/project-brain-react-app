@@ -9,11 +9,16 @@ const types = {
   feature:  { Icon: Puzzle,    color: "#7cff8a" },
 };
 
-const TypeIcon = ({ type }) => {
+const TypeIcon = ({ type, boxed = false }) => {
   const { Icon, color } = types[type] ?? { Icon: Pin, color: "#ff8f78" };
 
   return (
-    <span className={styles.icon} style={{ "--glow": color }} role="img" aria-label={type}>
+    <span
+      className={`${styles.icon} ${boxed ? styles.boxed : ""}`}
+      style={{ "--glow": color }}
+      role="img"
+      aria-label={type}
+    >
       <Icon size={18} strokeWidth={1.8} />
     </span>
   );
