@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Brain } from "lucide-react";
+import { itemTypes } from "../../constants/items";
 import styles from "./QuickCapture.module.css";
-
-const itemTypes = ["idea", "bug", "research", "refactor", "feature"];
 
 const QuickCapture = ({ projects, onCapture }) => {
     const [title, setTitle] = useState("");

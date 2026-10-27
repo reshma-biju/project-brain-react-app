@@ -6,14 +6,23 @@ import StatsRow from "../components/dashboard/StatsRow";
 import FocusProjects from "../components/dashboard/FocusProjects";
 import ItemListCard from "../components/dashboard/ItemListCard";
 import QuickCapture from "../components/dashboard/QuickCapture";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ProjectsContext from "../context/ProjectsContext";
+import NewProjectModal from "../components/projects/NewProjectModal";
+import { useNavigate } from "react-router-dom";
 
 
 const Dashboard = () => {
  // const [projectList, setProjectList] = useState(projects);
  const { projectList, addProject, addItem, clearProjects, resetProjects } =
     useContext(ProjectsContext);
+  const [isNewOpen, setIsNewOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleCreateProject = (projectData) => {
+    const projectId = addProject(projectData);
+    navigate(`/projects/${projectId}`);
+  };
 
   const projLen = projectList.length;
   const hasProjects = projectList.length > 0;//just for readability
@@ -86,7 +95,7 @@ const doneCount = allItems.filter(i => i.status === "done").length;
       <div className={styles.outerContainer}>
         {hasProjects ? (
           <>
-            <DashboardHeader onCreateProject={addProject} greetingMsg={getGreetings()}/>
+            <DashboardHeader onCreateProject={() => setIsNewOpen(true)} greetingMsg={getGreetings()}/>
                  <QuickCapture projects={projectList} onCapture={addItem} />
             <StatsRow stats={stats} />
             <FocusProjects projects={focusProjects} />
@@ -97,10 +106,17 @@ const doneCount = allItems.filter(i => i.status === "done").length;
            
           </>
         ) : (
-          <EmptyState onCreateProject={addProject}/>
+          <EmptyState onCreateProject={() => setIsNewOpen(true)}/>
         )}
        
       </div>
+
+      {isNewOpen && (
+        <NewProjectModal
+          onCreate={handleCreateProject}
+          onClose={() => setIsNewOpen(false)}
+        />
+      )}
 
       {/* dev buttons: outside the condition, so they show in both states */}
       <div className={styles.btnContainer}>

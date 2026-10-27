@@ -2,14 +2,18 @@ import ProjectsHeader from "../components/projects/ProjectsHeader";
 import ProjectsToolBar from "../components/projects/ProjectsToolBar";
 import ProjectsContext from "../context/ProjectsContext";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Projects.module.css";
 import ProjectListCard from "../components/projects/ProjectListCard";
 import EmptyState from "../components/dashboard/EmptyState";
+import NewProjectModal from "../components/projects/NewProjectModal";
 import { categories } from "../constants/categories";
 import { Search } from "lucide-react";
 
 const Projects = () => {
      const { projectList, addProject, togglePin } = useContext(ProjectsContext);
+    const [isNewOpen, setIsNewOpen] = useState(false);
+    const navigate = useNavigate();
     const [searchText, setSearchText] = useState("");
      const [category, setCategory] = useState("All");
 
@@ -28,11 +32,27 @@ const Projects = () => {
         setCategory("All");
     };
 
-    if (!hasProjects) return <EmptyState onCreateProject={addProject} />;
+    const handleCreateProject = (projectData) => {
+        const projectId = addProject(projectData);
+        navigate(`/projects/${projectId}`);
+    };
+    const newProjectModal = isNewOpen && (
+        <NewProjectModal onCreate={handleCreateProject} onClose={() => setIsNewOpen(false)} />
+    );
+
+    if (!hasProjects) {
+        return (
+     <>
+       <EmptyState onCreateProject={() => setIsNewOpen(true)} />
+       {newProjectModal}
+     </>
+   );
+    }
 
     return (
+        <>
          <div className={styles.outerContainer}>
-            <ProjectsHeader onCreateProject={addProject} />
+            <ProjectsHeader onCreateProject={() => setIsNewOpen(true)} />
             <ProjectsToolBar
                 searchText={searchText}
                 onSearchChange={setSearchText}
@@ -64,6 +84,8 @@ const Projects = () => {
                 </div>
             )}
          </div>
+            {newProjectModal}
+           </>
     );
 
 }

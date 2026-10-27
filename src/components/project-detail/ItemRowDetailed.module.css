@@ -1,0 +1,146 @@
+.row {
+	display: grid;
+	grid-template-columns: 20px 36px minmax(0, 1fr) 110px 94px 32px;
+	align-items: center;
+	gap: 12px;
+	min-height: 66px;
+	padding: 10px 16px;
+	border: 1px solid rgb(224 150 108 / 15%);
+	border-radius: 10px;
+	background: var(--color-card-gradient);
+}
+
+.statusCircle {
+	display: inline-grid;
+	width: 20px;
+	height: 20px;
+	place-items: center;
+	padding: 0;
+	border: 2px solid #a3a3a3;
+	border-radius: 50%;
+	background: transparent;
+	color: #218b45;
+	cursor: pointer;
+}
+
+.done {
+	border-color: #218b45;
+	background: color-mix(in srgb, #218b45 16%, transparent);
+}
+
+.statusCircle:focus-visible,
+.statusSelect:focus-visible,
+.deleteButton:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+.statusSelect {
+	width: 100%;
+	min-width: 0;
+	min-height: 28px;
+	padding: 0 8px;
+	border: 0;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--status-color) 20%, transparent);
+	color: var(--status-color);
+	font: inherit;
+	font-size: 11px;
+	cursor: pointer;
+	 color-scheme: dark;                 /* tells the browser to draw its native list dark */
+
+}
+
+ 
+
+
+.statusSelect option {
+  background: #2a1d17;                /* solid dark brown, not transparent */
+  color: #f5e9dc;                     /* readable cream, not the status color */
+}
+.statusOption[data-highlighted] {
+  background: #d88758;
+  color: #1b120e;
+}
+.copy {
+	min-width: 0;
+}
+
+.title {
+	margin: 0;
+	color: var(--color-text);
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.4;
+	overflow-wrap: anywhere;
+}
+
+.details {
+	display: -webkit-box;
+	overflow: hidden;
+	margin: 2px 0 0;
+	color: var(--color-text-muted);
+	font-size: 11px;
+	line-height: 1.4;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+}
+
+.date {
+	color: var(--color-text-muted);
+	font-size: 11px;
+	text-align: right;
+	white-space: nowrap;
+}
+
+.deleteButton {
+	display: inline-grid;
+	width: 32px;
+	height: 32px;
+	place-items: center;
+	padding: 0;
+	border: 0;
+	border-radius: 8px;
+	background: transparent;
+	color: var(--color-text-muted);
+	cursor: pointer;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.deleteButton:hover {
+	color: var(--color-accent);
+	background: rgb(217 144 101 / 12%);
+}
+
+@media (max-width: 600px) {
+	.row {
+		grid-template-columns: 20px 36px minmax(0, 1fr) 32px;
+		gap: 10px;
+	}
+
+	.row > :nth-child(4) {
+		grid-column: 3;
+		grid-row: 2;
+		justify-self: start;
+	}
+
+	.date {
+		grid-column: 4;
+		grid-row: 2;
+	}
+
+	.copy {
+		grid-column: 3;
+		grid-row: 1;
+	}
+
+	.deleteButton {
+		grid-column: 4;
+		grid-row: 1;
+	}
+
+	.row > :nth-child(4),
+	.date {
+		margin-top: 2px;
+	}
+}
