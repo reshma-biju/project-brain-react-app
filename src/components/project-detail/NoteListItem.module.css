@@ -1,0 +1,67 @@
+.listItem {
+	margin: 0 0 8px;
+}
+
+.listItem:last-child {
+	margin-bottom: 0;
+}
+
+.noteItem {
+	display: flex;
+	width: 100%;
+	min-width: 0;
+	flex-direction: column;
+	gap: 4px;
+	padding: 12px 14px;
+	border-radius: 12px;
+	border: 1px solid var(--card-border);
+	background: rgb(33 24 21 / 45%);   /* --color-input at 45% */
+	color: var(--color-text);
+	font-family: inherit;
+	text-align: left;
+	cursor: pointer;
+	transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+.noteItem:hover {
+	border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-border));
+}
+
+/* must stay below :hover so the selected look wins */
+.noteItem.selected,
+.noteItem.selected:hover {
+	border-color: var(--color-accent);
+	background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+	box-shadow: 0 0 16px color-mix(in srgb, var(--color-accent) 18%, transparent);
+}
+
+.noteItem:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+.noteItem:disabled {
+	cursor: not-allowed;
+}
+
+.noteTitle {
+	overflow: hidden;
+	font-size: 15px;
+	font-weight: 600;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.notePreview {
+	display: -webkit-box;
+	overflow: hidden;
+	color: var(--color-text-muted);
+	font-size: 13px;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+}
+
+.noteDate {
+	color: var(--color-text-muted);
+	font-size: 12px;
+}

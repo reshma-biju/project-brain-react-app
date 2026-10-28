@@ -3,11 +3,12 @@ import { ITEM_STATUSES, itemTypes } from "../../constants/items";
 import Modal from "../shared/Modal";
 import styles from "./AddItemModal.module.css";
 
-const AddItemModal = ({ onAdd, onClose }) => {
-  const [title, setTitle] = useState("");
-  const [type, setType] = useState("idea");
-  const [status, setStatus] = useState("captured");
-  const [details, setDetails] = useState("");
+const AddItemModal = ({ initial, onSave, onClose }) => {
+  const isEdit = Boolean(initial);
+  const [title, setTitle] = useState(initial?.title ?? "");
+  const [type, setType] = useState(initial?.type ?? "idea");
+  const [status, setStatus] = useState(initial?.status ?? "captured");
+  const [details, setDetails] = useState(initial?.details ?? "");
   const [titleError, setTitleError] = useState("");
 
   const handleSubmit = (event) => {
@@ -19,12 +20,12 @@ const AddItemModal = ({ onAdd, onClose }) => {
       return;
     }
 
-    onAdd({ title: trimmedTitle, type, status, details });
+    onSave({ title: trimmedTitle, type, status, details: details.trim() });
     onClose();
   };
 
   return (
-    <Modal title="Add item" onClose={onClose}>
+    <Modal title={isEdit ? "Edit item" : "Add item"} onClose={onClose}>
       <form noValidate className={styles.form} onSubmit={handleSubmit}>
         <label className={styles.field} htmlFor="add-item-title">
           <span>Title <span className={styles.required}>*</span></span>
@@ -79,7 +80,9 @@ const AddItemModal = ({ onAdd, onClose }) => {
 
         <div className={styles.actions}>
           <button className={styles.cancelButton} type="button" onClick={onClose}>Cancel</button>
-          <button className={styles.submitButton} type="submit">Add item</button>
+          <button className={styles.submitButton} type="submit">
+            {isEdit ? "Save changes" : "Add item"}
+          </button>
         </div>
       </form>
     </Modal>

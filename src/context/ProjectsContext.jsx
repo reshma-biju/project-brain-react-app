@@ -44,6 +44,40 @@ const [projectList, setProjectList] = useState(sampleProjects);
     );
   };
 
+  const deleteProject = (projectId) => {
+    setProjectList((prev) => prev.filter((project) => project.id !== projectId));
+  };
+
+  const updateProject = (projectId, { name, description, category }) => {
+    const now = new Date().toISOString();
+    setProjectList((prev) =>
+      prev.map((project) =>
+        project.id === projectId
+          ? { ...project, name, description, category, updatedAt: now }
+          : project,
+      ),
+    );
+  };
+
+  const updateItem = (projectId, itemId, { title, type, status, details }) => {
+    const now = new Date().toISOString();
+    setProjectList((prev) =>
+      prev.map((project) =>
+        project.id === projectId
+          ? {
+              ...project,
+              items: project.items.map((item) =>
+                item.id === itemId
+                  ? { ...item, title, type, status, details, updatedAt: now }
+                  : item,
+              ),
+              updatedAt: now,
+            }
+          : project,
+      ),
+    );
+  };
+
   const updateItemStatus = (projectId, itemId, status) => {
     const now = new Date().toISOString();
     setProjectList((prev) =>
@@ -76,6 +110,61 @@ const [projectList, setProjectList] = useState(sampleProjects);
     );
   };
 
+  const addNote = (projectId, { title, body }) => {
+    const now = new Date().toISOString();
+    const newNote = {
+      id: crypto.randomUUID(),
+      title,
+      body,
+      createdAt: now,
+      updatedAt: now,
+    };
+    setProjectList((prev) =>
+      prev.map((project) =>
+        project.id === projectId
+          ? {
+              ...project,
+              notes: [...project.notes, newNote],
+              updatedAt: now,
+            }
+          : project,
+      ),
+    );
+    return newNote.id;
+  };
+
+  const updateNote = (projectId, noteId, { title, body }) => {
+    const now = new Date().toISOString();
+    setProjectList((prev) =>
+      prev.map((project) =>
+        project.id === projectId
+          ? {
+              ...project,
+              notes: project.notes.map((note) =>
+                note.id === noteId ? { ...note, title, body, updatedAt: now } : note,
+              ),
+              updatedAt: now,
+            }
+          : project,
+      ),
+    );
+  };
+
+  const deleteNote = (projectId, noteId) => {
+    const now = new Date().toISOString();
+    setProjectList((prev) =>
+      prev.map((project) =>
+        project.id === projectId
+          ? {
+              ...project,
+              notes: project.notes.filter((note) => note.id !== noteId),
+              updatedAt: now,
+            }
+          : project,
+      ),
+    );
+  };
+
   //logic to pin and unpin proj
   const togglePin = (id) =>
   setProjectList((prev) => prev.map((p) => (p.id === id ? { ...p, pinned: !p.pinned } : p)));
@@ -85,7 +174,7 @@ const [projectList, setProjectList] = useState(sampleProjects);
   const resetProjects = () => setProjectList(sampleProjects);
 
   return (
-    <ProjectsContext.Provider value={{ projectList, addProject, addItem, updateItemStatus, deleteItem, clearProjects, resetProjects, togglePin }}>
+    <ProjectsContext.Provider value={{ projectList, addProject, addItem, deleteProject, updateProject, updateItem, updateItemStatus, deleteItem, addNote, updateNote, deleteNote, clearProjects, resetProjects, togglePin }}>
       {children}
     </ProjectsContext.Provider>
   );

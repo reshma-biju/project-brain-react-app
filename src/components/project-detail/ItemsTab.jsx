@@ -3,13 +3,16 @@ import { Plus, Search } from "lucide-react";
 import ItemRowDetailed from "./ItemRowDetailed";
 import ItemsToolbar from "./ItemsToolbar";
 import AddItemModal from "./AddItemModal";
+import ConfirmDialog from "../shared/ConfirmDialog";
 import styles from "./ItemsTab.module.css";
 
-const ItemsTab = ({ projectId, items, onAdd, onStatusChange, onDelete }) => {
+const ItemsTab = ({ projectId, items, onAdd, onUpdateItem, onStatusChange, onDelete }) => {
   const [searchText, setSearchText] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
   const [typeFilter, setTypeFilter] = useState("All");
   const [isAddOpen, setIsAddOpen] = useState(false);
+  const [editingItem, setEditingItem] = useState(null);
+  const [deletingItem, setDeletingItem] = useState(null);
   const normalizedSearch = searchText.trim().toLowerCase();
   const isFiltering = normalizedSearch !== "" || statusFilter !== "All" || typeFilter !== "All";
   const visibleItems = [...items].sort(
@@ -40,7 +43,7 @@ const ItemsTab = ({ projectId, items, onAdd, onStatusChange, onDelete }) => {
             <span>Add item</span>
           </button>
         </div>
-        {isAddOpen && <AddItemModal onAdd={onAdd} onClose={() => setIsAddOpen(false)} />}
+        {isAddOpen && <AddItemModal onSave={onAdd} onClose={() => setIsAddOpen(false)} />}
       </>
     );
   }
@@ -63,7 +66,15 @@ const ItemsTab = ({ projectId, items, onAdd, onStatusChange, onDelete }) => {
           <span>Add item</span>
         </button>
       </div>
-      {isAddOpen && <AddItemModal onAdd={onAdd} onClose={() => setIsAddOpen(false)} />}
+      {isAddOpen && <AddItemModal onSave={onAdd} onClose={() => setIsAddOpen(false)} />}
+      {editingItem && (
+        <AddItemModal
+          key={editingItem.id}
+          initial={editingItem}
+          onSave={(data) => onUpdateItem(projectId, editingItem.id, data)}
+          onClose={() => setEditingItem(null)}
+        />
+      )}
       {visibleItems.length === 0 ? (
         <div className={styles.noMatches}>
           <Search size={24} aria-hidden="true" />
@@ -79,10 +90,23 @@ const ItemsTab = ({ projectId, items, onAdd, onStatusChange, onDelete }) => {
               key={item.id}
               item={item}
               onStatusChange={(status) => onStatusChange(projectId, item.id, status)}
-              onDelete={() => onDelete(projectId, item.id)}
+              onEdit={() => setEditingItem(item)}
+              onDelete={() => setDeletingItem(item)}
             />
           ))}
         </ul>
+      )}
+      {deletingItem && (
+        <ConfirmDialog
+          title="Delete item?"
+          message={`Are you sure you want to delete “${deletingItem.title}”? This cannot be undone.`}
+          confirmLabel="Delete item"
+          onConfirm={() => {
+            onDelete(projectId, deletingItem.id);
+            setDeletingItem(null);
+          }}
+          onCancel={() => setDeletingItem(null)}
+        />
       )}
     </>
   );

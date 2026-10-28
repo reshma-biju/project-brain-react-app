@@ -113,7 +113,7 @@ const doneCount = allItems.filter(i => i.status === "done").length;
 
       {isNewOpen && (
         <NewProjectModal
-          onCreate={handleCreateProject}
+          onSave={handleCreateProject}
           onClose={() => setIsNewOpen(false)}
         />
       )}

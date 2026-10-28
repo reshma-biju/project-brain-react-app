@@ -3,10 +3,11 @@ import { categories } from "../../constants/categories";
 import Modal from "../shared/Modal";
 import styles from "../project-detail/AddItemModal.module.css";
 
-const NewProjectModal = ({ onCreate, onClose }) => {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("Other");
+const NewProjectModal = ({ initial, onSave, onClose }) => {
+  const isEdit = Boolean(initial);
+  const [name, setName] = useState(initial?.name ?? "");
+  const [description, setDescription] = useState(initial?.description ?? "");
+  const [category, setCategory] = useState(initial?.category ?? "Other");
   const [nameError, setNameError] = useState("");
 
   const handleSubmit = (event) => {
@@ -18,12 +19,12 @@ const NewProjectModal = ({ onCreate, onClose }) => {
       return;
     }
 
-    onCreate({ name: trimmedName, description: description.trim(), category });
+    onSave({ name: trimmedName, description: description.trim(), category });
     onClose();
   };
 
   return (
-    <Modal title="New project" onClose={onClose}>
+    <Modal title={isEdit ? "Edit project" : "New project"} onClose={onClose}>
       <form noValidate className={styles.form} onSubmit={handleSubmit}>
         <label className={styles.field} htmlFor="new-project-name">
           <span>Name <span className={styles.required}>*</span></span>
@@ -66,7 +67,9 @@ const NewProjectModal = ({ onCreate, onClose }) => {
 
         <div className={styles.actions}>
           <button className={styles.cancelButton} type="button" onClick={onClose}>Cancel</button>
-          <button className={styles.submitButton} type="submit">Create project</button>
+          <button className={styles.submitButton} type="submit">
+            {isEdit ? "Save changes" : "Create project"}
+          </button>
         </div>
       </form>
     </Modal>

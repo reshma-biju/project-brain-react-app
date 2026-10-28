@@ -7,12 +7,15 @@ const QuickCapture = ({ projects, onCapture }) => {
     const [title, setTitle] = useState("");
     const [type, setType] = useState("idea");
     const [projectId, setProjectId] = useState(projects[0]?.id ?? "");
+    const selectedProjectId = projects.some((project) => project.id === projectId)
+        ? projectId
+        : projects[0]?.id;
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (!title.trim() || !projectId) return;
+        if (!title.trim() || !selectedProjectId) return;
 
-        onCapture({ title: title.trim(), type, projectId });
+        onCapture({ title: title.trim(), type, projectId: selectedProjectId });
         setTitle("");
     };
 
@@ -44,7 +47,7 @@ const QuickCapture = ({ projects, onCapture }) => {
             <select
                 className={styles.select}
                 aria-label="Project"
-                value={projectId}
+                value={selectedProjectId}
                 onChange={(event) => setProjectId(event.target.value)}
             >
                 {projects.map((project) => (
