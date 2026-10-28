@@ -1,0 +1,130 @@
+.editor {
+	display: flex;
+	min-height: 360px;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.editorHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.editorHeader h2 {
+	margin: 0;
+	color: var(--color-text);
+	font-family: var(--font-heading, inherit);
+	font-size: 22px;
+	font-weight: 600;
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.cancelButton,
+.saveButton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	height: 38px;
+	padding: 0 16px;
+	border: 1px solid var(--color-border);
+	border-radius: 10px;
+	background: transparent;
+	color: var(--color-text);
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.saveButton {
+	border-color: var(--color-accent);
+	background: var(--color-accent);
+	color: var(--color-input);
+	font-weight: 600;
+}
+
+/* same small-caps label style as "QUICK CAPTURE" on the dashboard */
+.fieldLabel {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	color: var(--color-text-muted);
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.titleInput,
+.bodyInput {
+	width: 100%;
+	border: 1px solid var(--color-border);
+	border-radius: 10px;
+	background: var(--color-input);
+	color: var(--color-text);
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: 400;
+	letter-spacing: normal;
+	text-transform: none;
+}
+
+.titleInput {
+	height: 42px;
+	padding: 0 12px;
+}
+
+.titleInput[aria-invalid="true"] {
+	border-color: #e87968;
+}
+
+.titleError {
+	color: #e87968;
+	font-size: 12px;
+	font-weight: 400;
+	letter-spacing: normal;
+	text-transform: none;
+}
+
+.bodyInput {
+	min-height: 220px;
+	flex: 1;
+	padding: 12px;
+	line-height: 1.6;
+	resize: vertical;
+}
+
+.characterCount {
+	align-self: flex-end;
+	margin-top: -8px;
+	color: var(--color-text-muted);
+	font-size: 12px;
+}
+
+.titleInput:focus-visible,
+.bodyInput:focus-visible {
+	outline: none;
+	border-color: var(--color-accent);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
+}
+
+.cancelButton:focus-visible,
+.saveButton:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+	.editorHeader {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+}

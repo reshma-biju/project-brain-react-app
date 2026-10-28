@@ -1,10 +1,11 @@
-import { Check, Trash2 } from "lucide-react";
+import { Check, Pencil, Trash2 } from "lucide-react";
 import { formatDate } from "../../utils/formatDate";
 import TypeIcon from "../shared/TypeIcon";
+import ActionMenu from "../shared/ActionMenu";
 import { ITEM_STATUSES } from "../../constants/items";
 import styles from "./ItemRowDetailed.module.css";
 
-const ItemRowDetailed = ({ item, onStatusChange, onDelete }) => {
+const ItemRowDetailed = ({ item, onStatusChange, onEdit, onDelete }) => {
   const isDone = item.status === "done";
   const { color } = ITEM_STATUSES[item.status] ?? ITEM_STATUSES.captured;
 
@@ -38,16 +39,26 @@ const ItemRowDetailed = ({ item, onStatusChange, onDelete }) => {
       <span className={styles.date}>
         {formatDate(item.createdAt, { year: true })}
       </span>
-      <button
-        className={styles.deleteButton}
-        type="button"
-        aria-label={`Delete ${item.title}`}
-        onClick={() => {
-          if (window.confirm(`Delete "${item.title}"?`)) onDelete();
-        }}
-      >
-        <Trash2 size={17} aria-hidden="true" />
-      </button>
+      <div className={styles.rowActions}>
+        <ActionMenu
+          label={`${item.title} actions`}
+          items={[
+            {
+              key: "edit-item",
+              label: "Edit",
+              icon: <Pencil aria-hidden="true" />,
+              onClick: onEdit,
+            },
+            {
+              key: "delete-item",
+              label: "Delete",
+              icon: <Trash2 aria-hidden="true" />,
+              danger: true,
+              onClick: onDelete,
+            },
+          ]}
+        />
+      </div>
     </li>
   );
 };

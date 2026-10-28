@@ -7,12 +7,16 @@ import styles from "./Projects.module.css";
 import ProjectListCard from "../components/projects/ProjectListCard";
 import EmptyState from "../components/dashboard/EmptyState";
 import NewProjectModal from "../components/projects/NewProjectModal";
+import ConfirmDialog from "../components/shared/ConfirmDialog";
 import { categories } from "../constants/categories";
 import { Search } from "lucide-react";
 
 const Projects = () => {
-     const { projectList, addProject, togglePin } = useContext(ProjectsContext);
+    const { projectList, addProject, togglePin, updateProject, deleteProject } = useContext(ProjectsContext);
     const [isNewOpen, setIsNewOpen] = useState(false);
+    const [selectedProject, setSelectedProject] = useState(null);
+    const [isEditOpen, setIsEditOpen] = useState(false);
+    const [isDeleteOpen, setIsDeleteOpen] = useState(false);
     const navigate = useNavigate();
     const [searchText, setSearchText] = useState("");
      const [category, setCategory] = useState("All");
@@ -36,8 +40,46 @@ const Projects = () => {
         const projectId = addProject(projectData);
         navigate(`/projects/${projectId}`);
     };
+    const handleEditProject = (project) => {
+        setSelectedProject(project);
+        setIsEditOpen(true);
+    };
+    const handleDeleteProject = (project) => {
+        setSelectedProject(project);
+        setIsDeleteOpen(true);
+    };
+    const handleCloseProjectDialog = () => {
+        setIsEditOpen(false);
+        setIsDeleteOpen(false);
+        setSelectedProject(null);
+    };
+    const handleConfirmDelete = () => {
+        if (!selectedProject) return;
+        deleteProject(selectedProject.id);
+        handleCloseProjectDialog();
+    };
     const newProjectModal = isNewOpen && (
-        <NewProjectModal onCreate={handleCreateProject} onClose={() => setIsNewOpen(false)} />
+        <NewProjectModal onSave={handleCreateProject} onClose={() => setIsNewOpen(false)} />
+    );
+    const projectActionDialogs = (
+        <>
+            {isEditOpen && selectedProject && (
+                <NewProjectModal
+                    initial={selectedProject}
+                    onSave={(data) => updateProject(selectedProject.id, data)}
+                    onClose={handleCloseProjectDialog}
+                />
+            )}
+            {isDeleteOpen && selectedProject && (
+                <ConfirmDialog
+                    title="Delete project?"
+                    message={`Are you sure you want to delete “${selectedProject.name}”? This cannot be undone.`}
+                    confirmLabel="Delete project"
+                    onConfirm={handleConfirmDelete}
+                    onCancel={handleCloseProjectDialog}
+                />
+            )}
+        </>
     );
 
     if (!hasProjects) {
@@ -45,6 +87,7 @@ const Projects = () => {
      <>
        <EmptyState onCreateProject={() => setIsNewOpen(true)} />
        {newProjectModal}
+             {projectActionDialogs}
      </>
    );
     }
@@ -79,12 +122,19 @@ const Projects = () => {
             ) : (
                 <div className={styles.grid}>
                     {visibleProjects.map((project) => (
-                    <ProjectListCard key={project.id} project={project} onTogglePin={() => togglePin(project.id)} />
+                    <ProjectListCard
+                        key={project.id}
+                        project={project}
+                        onTogglePin={() => togglePin(project.id)}
+                        onEditProject={handleEditProject}
+                        onDeleteProject={handleDeleteProject}
+                    />
                     ))}
                 </div>
             )}
          </div>
             {newProjectModal}
+            {projectActionDialogs}
            </>
     );
 

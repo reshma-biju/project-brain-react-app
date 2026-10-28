@@ -29,6 +29,7 @@ html {
   --color-sage: #8fbf91;
   --card-bg: linear-gradient(180deg, rgb(241 229 216 / 5%), rgb(241 229 216 / 2%));
   --card-border: rgb(217 144 101 / 20%);
+  --color-danger: #e87968;
 }
 
 body {

@@ -2,18 +2,19 @@ import {
     ArrowRight,
     CalendarDays,
     List,
-    MoreVertical
+    Star
 } from "lucide-react";
 import { getProgress } from "../../utils/getProgress";
 import { formatDate } from "../../utils/formatDate";
 import styles from "./ProjectListCard.module.css";
 import ProgressBar from "../shared/ProgressBar";
 import PinStar from "../shared/PinStar";
+import ActionMenu from "../shared/ActionMenu";
 import { Link } from "react-router-dom";
 import CategoryPill from "../shared/CategoryPill";
 import CategoryIcon from "../shared/CategoryIcon";
 
-const ProjectListCard = ({ project, onTogglePin}) => {
+const ProjectListCard = ({ project, onTogglePin, onEditProject, onDeleteProject }) => {
     //const { Icon, color } = categoryStyles[project.category] ?? categoryStyles.default;
     //old code now moved to category icon compo- above line look up by key: categoryStyles["Web App"] → { Icon: FolderOpen, color: e0966c" } if that lookup found nothing (undefined), use the fallback entry and destructuring: pull the two fields out into variables Icon, color
     //const { color } = categoryStyles[project.category] ?? categoryStyles.default;
@@ -27,9 +28,28 @@ const ProjectListCard = ({ project, onTogglePin}) => {
                 <CategoryIcon category={project.category} />
                 <div className={styles.actions}>
                    <PinStar pinned={project.pinned} onToggle={onTogglePin} />
-                    <button className={styles.menuButton} type="button" aria-label="More project actions">
-                        <MoreVertical size={19} aria-hidden="true" />
-                    </button>
+                    <ActionMenu
+                        label="Project actions"
+                        items={[
+                            {
+                                key: "toggle-pin",
+                                label: project.pinned ? "Unpin project" : "Pin project",
+                                icon: <Star aria-hidden="true" />,
+                                onClick: onTogglePin,
+                            },
+                            {
+                                key: "edit-project",
+                                label: "Edit project",
+                                onClick: () => onEditProject(project),
+                            },
+                            {
+                                key: "delete-project",
+                                label: "Delete project",
+                                danger: true,
+                                onClick: () => onDeleteProject(project),
+                            },
+                        ]}
+                    />
                 </div>
             </div>
 
