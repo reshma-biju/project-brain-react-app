@@ -12,10 +12,10 @@ import styles from "./SideBar.module.css";
 
 function Sidebar() {
   const navigate = useNavigate();
-  const { user, setUser } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
-  function handleLogout() {
-    setUser(null);
+  async function handleLogout() {
+    await logout();
     navigate("/login");
   }
 
