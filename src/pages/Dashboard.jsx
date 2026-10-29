@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
  // const [projectList, setProjectList] = useState(projects);
- const { projectList, addProject, addItem, clearProjects, resetProjects } =
+ const { projectList, addProject, addItem} =
     useContext(ProjectsContext);
   const [isNewOpen, setIsNewOpen] = useState(false);
   const navigate = useNavigate();
@@ -117,17 +117,6 @@ const doneCount = allItems.filter(i => i.status === "done").length;
           onClose={() => setIsNewOpen(false)}
         />
       )}
-
-      {/* dev buttons: outside the condition, so they show in both states */}
-      <div className={styles.btnContainer}>
-
-        <button className={styles.btn} onClick={clearProjects}>
-          Delete all projects
-        </button>
-        <button className={styles.btn} onClick={resetProjects}>
-          Reset sample data
-        </button>
-      </div>
     </>
   );
 };

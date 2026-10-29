@@ -1,10 +1,19 @@
-import { createContext, useState } from "react";
-import { projects as sampleProjects } from "../data/projects";
+import { createContext, useContext, useEffect, useState } from "react";
+import AuthContext from "./AuthContext";
+import { loadJSON, saveJSON } from "../utils/storage";
 
 const ProjectsContext = createContext();
 
 function ProjectsProvider({ children }) {
-const [projectList, setProjectList] = useState(sampleProjects);
+  const { user } = useContext(AuthContext);
+  const storageKey = user ? `pb_projects_${user.id}` : null;
+  const [projectList, setProjectList] = useState(() =>
+    storageKey ? loadJSON(storageKey, []) : [],
+  );
+
+  useEffect(() => {
+    if (storageKey) saveJSON(storageKey, projectList);
+  }, [projectList, storageKey]);
 
   // addProject and addItem go here (move your handlers in)
   const addProject = ({ name, description = "", category = "Other" }) => {
@@ -169,12 +178,10 @@ const [projectList, setProjectList] = useState(sampleProjects);
   const togglePin = (id) =>
   setProjectList((prev) => prev.map((p) => (p.id === id ? { ...p, pinned: !p.pinned } : p)));
 
-  // temporary dev helpers (delete later)
-  const clearProjects = () => setProjectList([]);
-  const resetProjects = () => setProjectList(sampleProjects);
+ 
 
   return (
-    <ProjectsContext.Provider value={{ projectList, addProject, addItem, deleteProject, updateProject, updateItem, updateItemStatus, deleteItem, addNote, updateNote, deleteNote, clearProjects, resetProjects, togglePin }}>
+    <ProjectsContext.Provider value={{ projectList, addProject, addItem, deleteProject, updateProject, updateItem, updateItemStatus, deleteItem, addNote, updateNote, deleteNote,togglePin }}>
       {children}
     </ProjectsContext.Provider>
   );

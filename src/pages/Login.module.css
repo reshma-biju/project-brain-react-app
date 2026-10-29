@@ -306,6 +306,34 @@
   line-height: 1.5;
 }
 
+.errorMessage,
+.successMessage {
+  margin: 0 0 18px;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.errorMessage,
+.submitButton:disabled {
+  opacity: 0.7;
+}
+
+.errorMessage {
+  color: #f08a8a;
+}
+
+.successMessage {
+  color: #8ed3b2;
+}
+
+.storageNote {
+  margin: 12px 0 0;
+  color: var(--color-text-muted);
+  font-size: 11px;
+  text-align: center;
+}
+
 /* ========================================
    REMEMBER ME AND FORGOT PASSWORD
 ======================================== */

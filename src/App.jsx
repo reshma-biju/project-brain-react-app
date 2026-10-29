@@ -3,8 +3,9 @@ import { Routes, Route } from "react-router-dom";
 
 import LandingPage from "./pages/LandingPage";
 import Dashboard from "./pages/Dashboard";
-import CreateProject from "./pages/CreateProject";
+
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Projects from './pages/Projects';
 import Settings from './pages/Settings';
 import AppLayout from './layout/AppLayout';
@@ -18,6 +19,7 @@ function App() {
 {/* Pages outside the dashboard layout */}
 <Route path="/" element={<LandingPage />} />
 <Route path="/login" element={<Login />} />
+<Route path="/signup" element={<Signup />} />
 
   {/* Pages sharing the sidebar layout */}
   {/* Protected pages */}
@@ -27,7 +29,7 @@ function App() {
     <Route path="/projects" element={<Projects />} />
     <Route path="/projects/:id" element={<ProjectDetail />} />
     <Route path="/settings" element={<Settings />} />
-    <Route path="/create-project" element={<CreateProject />} />
+    
     </Route>
   </Route>
 </Routes>

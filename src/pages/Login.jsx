@@ -1,21 +1,23 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { Eye, EyeOff, ArrowRight } from "lucide-react";
-import { toast, ToastContainer } from "react-toastify";
 
 import AuthContext from "../context/AuthContext";
 import styles from "./Login.module.css";
 
 function Login() {
- const { setUser } = useContext(AuthContext);
+  const { isLoggedIn, login } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+  const [authError, setAuthError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   function validateEmail(value) {
     if (!value.trim()) {
@@ -37,10 +39,6 @@ function Login() {
   function validatePassword(value) {
     if (!value) {
       return "Password is required.";
-    }
-
-    if (value.length < 8) {
-      return "Password must be at least 8 characters.";
     }
 
     return "";
@@ -91,8 +89,9 @@ function Login() {
     }
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    setAuthError("");
 
     const emailError = validateEmail(email);
     const passwordError = validatePassword(password);
@@ -111,11 +110,18 @@ function Login() {
       return;
     }
 
-    // Temporary demo only: no real authentication yet.
-    setUser({ id: "u1", name: "Reshma", email: email })
-    toast.success("Login successful!");
-    navigate("/dashboard");
+    setIsLoading(true);
+    try {
+      await login({ email, password });
+      navigate("/dashboard");
+    } catch (error) {
+      setAuthError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   }
+
+  if (isLoggedIn) return <Navigate to="/dashboard" replace />;
 
   return (
     <main className={styles.loginPage}>
@@ -152,8 +158,15 @@ function Login() {
 
           <div className={styles.formHeading}>
             <h2>Welcome back</h2>
-            <p>Sign in to continue working on your projects.</p>
+            <p>Login to continue working on your projects.</p>
           </div>
+
+          {location.state?.message && (
+            <p className={styles.successMessage} role="status">
+              {location.state.message}
+            </p>
+          )}
+          {authError && <p className={styles.errorMessage} role="alert">{authError}</p>}
 
           <form onSubmit={handleSubmit} noValidate>
             <div className={styles.formGroup}>
@@ -228,22 +241,22 @@ function Login() {
               </Link>
             </div>
 
-            <button type="submit" className={styles.submitButton}>
-              Sign in
-              <ArrowRight size={18} />
+            <button type="submit" className={styles.submitButton} disabled={isLoading}>
+              {isLoading ? "Loging in..." : "Log in"}
+              {!isLoading && <ArrowRight size={18} />}
             </button>
           </form>
 
           <p className={styles.signupPrompt}>
             Don't have an account?{" "}
             <Link to="/signup" className={styles.textLink}>
-              Sign up
+              Create an account
             </Link>
           </p>
+          <p className={styles.storageNote}>Accounts are stored in this browser only.</p>
         </div>
       </section>
 
-      <ToastContainer position="top-right" autoClose={2500} />
     </main>
   );
 }
