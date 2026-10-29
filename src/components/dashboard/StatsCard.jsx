@@ -6,7 +6,7 @@ const StatsCard = ({ label, value, icon: Icon, tone }) => {
             <div>
                 <div className={styles.topRow}>
                     <span className={styles.icon}>
-                        <Icon size={16} strokeWidth={2} aria-hidden="true" />
+                        <Icon size={18} strokeWidth={2} aria-hidden="true" />
                     </span>
                     <p className={styles.value}>{value}</p>
                 </div>

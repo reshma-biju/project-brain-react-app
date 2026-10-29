@@ -1,6 +1,6 @@
 import { useContext,useState } from "react";
 import { ArrowLeft } from "lucide-react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import ProjectDetailHeader from "../components/project-detail/ProjectDetailHeader";
 import ProjectSummary from "../components/project-detail/ProjectSummary";
 import ProjectsContext from "../context/ProjectsContext";
@@ -13,6 +13,8 @@ import NewProjectModal from "../components/projects/NewProjectModal";
 
 const ProjectDetail = () => {
      const { id } = useParams();     // URL is /projects/p1  →  id is "p1"
+  const [searchParams] = useSearchParams();
+  const highlightId = searchParams.get("item");
   const navigate = useNavigate();
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -76,6 +78,7 @@ const ProjectDetail = () => {
           <ItemsTab
             projectId={project.id}
             items={project.items}
+            highlightId={highlightId}
             onAdd={(item) => addItem({ ...item, projectId: project.id })}
             onUpdateItem={updateItem}
             onStatusChange={updateItemStatus}

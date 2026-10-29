@@ -10,6 +10,19 @@
 	background: var(--color-card-gradient);
 }
 
+.highlighted {
+	animation: flash 2.4s ease-out;
+}
+
+@keyframes flash {
+	0%, 60% {
+		box-shadow: 0 0 0 2px var(--color-accent), 0 0 24px rgb(255 122 26 / 35%);
+	}
+	100% {
+		box-shadow: 0 0 0 0 transparent;
+	}
+}
+
 .statusCircle {
 	display: inline-grid;
 	width: 20px;
