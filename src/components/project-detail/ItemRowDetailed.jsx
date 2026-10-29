@@ -5,12 +5,15 @@ import ActionMenu from "../shared/ActionMenu";
 import { ITEM_STATUSES } from "../../constants/items";
 import styles from "./ItemRowDetailed.module.css";
 
-const ItemRowDetailed = ({ item, onStatusChange, onEdit, onDelete }) => {
+const ItemRowDetailed = ({ item, highlighted, onStatusChange, onEdit, onDelete }) => {
   const isDone = item.status === "done";
   const { color } = ITEM_STATUSES[item.status] ?? ITEM_STATUSES.captured;
 
   return (
-    <li className={styles.row}>
+    <li
+      id={`item-${item.id}`}
+      className={`${styles.row} ${highlighted ? styles.highlighted : ""}`}
+    >
       <button
         className={`${styles.statusCircle} ${isDone ? styles.done : ""}`}
         type="button"

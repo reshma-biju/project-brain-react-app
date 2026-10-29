@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Plus, Search } from "lucide-react";
 import ItemRowDetailed from "./ItemRowDetailed";
 import ItemsToolbar from "./ItemsToolbar";
@@ -6,7 +6,7 @@ import AddItemModal from "./AddItemModal";
 import ConfirmDialog from "../shared/ConfirmDialog";
 import styles from "./ItemsTab.module.css";
 
-const ItemsTab = ({ projectId, items, onAdd, onUpdateItem, onStatusChange, onDelete }) => {
+const ItemsTab = ({ projectId, items, highlightId, onAdd, onUpdateItem, onStatusChange, onDelete }) => {
   const [searchText, setSearchText] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
   const [typeFilter, setTypeFilter] = useState("All");
@@ -26,6 +26,13 @@ const ItemsTab = ({ projectId, items, onAdd, onUpdateItem, onStatusChange, onDel
 
     return matchesSearch && matchesStatus && matchesType;
   });
+
+  useEffect(() => {
+    if (!highlightId) return;
+    document
+      .getElementById(`item-${highlightId}`)
+      ?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [highlightId]);
 
   const clearFilters = () => {
     setSearchText("");
@@ -89,6 +96,7 @@ const ItemsTab = ({ projectId, items, onAdd, onUpdateItem, onStatusChange, onDel
             <ItemRowDetailed
               key={item.id}
               item={item}
+              highlighted={item.id === highlightId}
               onStatusChange={(status) => onStatusChange(projectId, item.id, status)}
               onEdit={() => setEditingItem(item)}
               onDelete={() => setDeletingItem(item)}

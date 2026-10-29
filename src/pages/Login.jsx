@@ -230,16 +230,6 @@ function Login() {
               )}
             </div>
 
-            <div className={styles.formOptions}>
-              <label className={styles.rememberMe}>
-                <input type="checkbox" name="rememberMe" />
-                <span>Remember me</span>
-              </label>
-
-              <Link to="/forgot-password" className={styles.textLink}>
-                Forgot password?
-              </Link>
-            </div>
 
             <button type="submit" className={styles.submitButton} disabled={isLoading}>
               {isLoading ? "Loging in..." : "Log in"}

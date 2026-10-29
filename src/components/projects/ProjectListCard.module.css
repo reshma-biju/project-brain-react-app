@@ -30,6 +30,60 @@
 	gap: 15px;
 }
 
+.compact {
+	padding: 25px 20px 0;
+}
+
+.compactHeader {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+}
+
+.compactText {
+	flex: 1;
+	min-width: 0;
+}
+
+.compact .name {
+	margin-top: 0;
+	font-size: 1.05rem;
+	display: block;
+	-webkit-line-clamp: unset;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.compact .description {
+	margin-top: 8px;
+	font-size: 0.85rem;
+	line-height: 1.5;
+}
+
+.compactProgress {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 16px 0 14px;
+}
+
+.compactProgress > :first-child {
+	flex: 1;
+}
+
+.compactPercent {
+	flex: 0 0 3ch;
+	color: var(--color-text-muted);
+	font-size: 0.8125rem;
+	font-variant-numeric: tabular-nums;
+	text-align: right;
+}
+
+.compact .footer {
+	min-height: 42px;
+}
+
 
 
 .menuButton {
