@@ -1,0 +1,19 @@
+.row {
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+	margin-bottom: 40px;
+	padding: 16px 8px;
+	border: 1px solid rgb(224 150 108 / 14%);
+	border-radius: 14px;
+	background: rgb(255 235 215 / 3%);
+}
+
+@media (max-width: 700px) {
+	.row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;   /* always exactly two columns */
+		margin-bottom: 28px;
+		padding: 6px;
+	}
+}

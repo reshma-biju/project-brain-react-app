@@ -1,16 +1,32 @@
-# React + Vite
+# Project Brain
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal project workspace for capturing ideas, tracking progress and keeping notes.
+Built with React, React Router and CSS Modules.
 
-Currently, two official plugins are available:
+**Live demo:** https://your-app.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![Dashboard](docs/dashboard.png)
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Sign up and log in (accounts are stored in your browser)
+- Create projects, pin favourites and track progress
+- Capture ideas, tasks and bugs, and change their status
+- Search and filter items
+- Notes for each project
+- Responsive layout for phones and desktops
 
-## Expanding the ESLint configuration
+## Tech stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+React, Vite, React Router, CSS Modules, lucide-react
+
+## Run locally
+
+    npm install
+    npm run dev
+
+## Important note
+
+Data is stored in your browser only (localStorage). There is no server, so your
+data isn't shared between devices, and clearing browser data removes it.
+Passwords are hashed in the browser, but this is a demo and not real security.

@@ -1,0 +1,34 @@
+.glow {
+  position: fixed;          /* stays framed around the screen while you scroll */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 240px;              /* your sidebar width, so the glow only covers the main area */
+  overflow: hidden;
+  pointer-events: none;     /* clicks go through to your content */
+  z-index: 0;
+}
+
+.art {
+  position: absolute;
+  inset: -8%;               /* slightly bigger than the area, so edges never show while drifting */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  mix-blend-mode: screen;   /* the dark brown disappears, only the glow stays */
+  will-change: transform;
+  animation: drift 20s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-1.5%, 1%) scale(1.04); }
+}
+
+/* phones: no glow, plain dark background */
+@media (max-width: 768px) {
+  .glow {
+    display: none;
+  }
+}

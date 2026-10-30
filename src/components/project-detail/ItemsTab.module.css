@@ -1,0 +1,155 @@
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.empty {
+	display: flex;
+	min-height: 300px;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	margin: 0;
+	padding: 24px;
+	border: 1px solid var(--card-border);
+	border-radius: 12px;
+	background: var(--color-card-gradient);
+	backdrop-filter: blur(10px);
+	box-shadow: inset 0 1px 0 rgb(255 255 255 / 5%);
+	color: var(--color-text-muted);
+	font-size: 14px;
+	text-align: center;
+}
+
+.empty h2 {
+	margin: 0;
+	color: var(--color-text);
+	font-size: 18px;
+}
+
+.empty p {
+	margin: 0;
+}
+
+.noMatches {
+	display: flex;
+	min-height: 300px;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	padding: 24px;
+	border: 1px solid var(--card-border);
+	border-radius: 12px;
+	background: var(--color-card-gradient);
+	backdrop-filter: blur(10px);
+	box-shadow: inset 0 1px 0 rgb(255 255 255 / 5%);
+	color: var(--color-text-muted);
+	font-size: 14px;
+	text-align: center;
+}
+
+.noMatches h2 {
+	margin: 0;
+	color: var(--color-text);
+	font-size: 18px;
+}
+
+.noMatches button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 40px;
+	margin-top: 4px;
+	padding: 0 14px;
+	border: 1px solid var(--color-accent);
+	border-radius: 10px;
+	background: var(--color-accent);
+	color: var(--color-input);
+	font: inherit;
+	font-size: 14px;
+	font-weight: 600;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.noMatches button:hover {
+	filter: brightness(1.08);
+}
+
+.noMatches button:focus-visible {
+	outline: 2px solid var(--color-text);
+	outline-offset: 3px;
+}
+
+.headerRow {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+}
+
+.addButton {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	height: 40px;
+	padding: 0 14px;
+	border: 1px solid var(--color-accent);
+	border-radius: 10px;
+	background: var(--color-accent);
+	color: var(--color-input);
+	font: inherit;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.addButton:hover {
+	filter: brightness(1.08);
+}
+
+.addButton:focus-visible {
+	outline: 2px solid var(--color-text);
+	outline-offset: 3px;
+}
+
+
+
+
+
+/* phone rules come last so they override the base rules */
+@media (max-width: 700px) {
+	.headerRow {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 12px;
+		margin-bottom: 8px;
+	}
+
+	/* compact button on the right instead of full width */
+	.addButton {
+		align-self: flex-end;
+		padding: 0 16px;
+	}
+
+	/* more space between rows */
+	.list {
+		gap: 10px;
+		margin-top: 12px;
+	}
+
+	.noMatches {
+		min-height: 160px;
+		padding: 24px 16px;
+	}
+	.empty {
+		min-height: 220px;
+	}
+}

@@ -1,0 +1,37 @@
+.card {
+	min-width: 0;
+	padding: 20px;
+	border: 1px solid rgb(217 144 101 / 22%);
+	border-radius: 8px;
+	background: var(--color-card-gradient);
+}
+
+.heading {
+	margin: 0 0 8px;
+	color: var(--color-accent);
+	font-family: var(--font-heading);
+	font-size: 1.125rem;
+	font-weight: 500;
+}
+
+.list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.empty {
+	margin: 0;
+	padding: 13px 0;
+	color: var(--color-text-muted);
+	font-size: 0.9rem;
+}
+@media (max-width: 700px) {
+	.card {
+		padding: 16px;
+	}
+
+	.empty {
+		padding: 10px 0;
+	}
+}

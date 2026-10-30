@@ -1,0 +1,182 @@
+.card {
+	position: relative;
+	isolation: isolate;
+	width: 100%;
+	margin: 0 0 40px;
+	padding: 28px;
+	border: 1px solid rgb(216 144 101 / 42%);
+	border-radius: 12px;
+	background:
+		radial-gradient(ellipse at 0 0, rgb(216 144 101 / 12%), transparent 58%),
+		linear-gradient(135deg, #3c2b22, #30221c 68%, #2a1e19);
+	box-shadow:
+		0 12px 32px rgb(0 0 0 / 18%),
+		inset 0 1px 0 rgb(255 239 220 / 8%);
+	transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.card:focus-within {
+	border-color: rgb(216 144 101 / 70%);
+	box-shadow:
+		0 0 0 1px rgb(216 144 101 / 14%),
+		0 14px 36px rgb(0 0 0 / 22%),
+		0 0 24px rgb(216 144 101 / 10%),
+		inset 0 1px 0 rgb(255 239 220 / 8%);
+}
+
+.label {
+	margin: 0 0 4px;
+	color: #e2a478;
+	font-family: var(--font-heading);
+	font-size: 1.5rem;
+	font-weight: 500;
+	line-height: 1.3;
+}
+
+.description {
+	margin: 0 0 18px;
+	color: var(--color-text-muted);
+	font-size: 0.9rem;
+}
+
+.form {
+	display: grid;
+	width: 100%;
+	grid-template-columns: minmax(180px, 1fr) auto auto auto;
+	gap: 10px;
+	margin: 0;
+}
+
+.titleInput,
+.select {
+	min-width: 0;
+	height: 56px;
+	padding: 0 12px;
+	border: 1px solid #5a4031;
+	border-radius: 8px;
+	background: var(--color-input);
+	color: var(--color-text);
+	font: inherit;
+	outline: none;
+	transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.titleInput:hover,
+.select:hover {
+	border-color: #79533a;
+}
+
+.select {
+	color-scheme: dark;
+}
+
+.select option {
+	background: var(--color-input);
+	color: var(--color-text);
+}
+
+.select option:checked {
+	background: var(--color-accent);
+	color: var(--color-input);
+}
+
+.select option:hover {
+	background: var(--color-accent);
+	color: var(--color-input);
+}
+
+.titleInput:focus,
+.select:focus-visible,
+.titleInput:focus-visible {
+	border-color: var(--color-accent);
+	box-shadow: 0 0 0 3px rgb(217 144 101 / 22%), 0 0 16px rgb(217 144 101 / 12%);
+}
+
+.titleInput::placeholder {
+	color: var(--color-text-muted);
+}
+
+.captureButton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	height: 56px;
+	min-height: 56px;
+	padding: 0 20px;
+	border: 1px solid var(--color-accent);
+	border-radius: 6px;
+	background-color: var(--color-accent);
+	color: var(--color-input);
+	font-size: 14px;
+	font-weight: 650;
+	cursor: pointer;
+	transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.captureButton:hover:not(:disabled) {
+	transform: translateY(-1px);
+	background-color: #e0a078;
+}
+
+.captureButton:focus-visible {
+	outline: 2px solid var(--color-text);
+	outline-offset: 3px;
+}
+
+.captureButton:disabled {
+	opacity: 0.72;
+	cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.card,
+	.titleInput,
+	.select,
+	.captureButton {
+		transition: none;
+	}
+}
+
+@media (max-width: 700px) {
+	.card {
+		margin-bottom: 28px;
+		padding: 18px;
+	}
+
+	.label {
+		font-size: 1.25rem;
+	}
+
+	.description {
+		margin-bottom: 14px;
+		font-size: 0.85rem;
+	}
+
+	.form {
+		grid-template-columns: 1fr 1fr;
+		gap: 10px;
+	}
+
+	.titleInput {
+		grid-column: 1 / -1;
+		font-size: 1rem;
+	}
+
+	.titleInput,
+	.select,
+	.captureButton {
+		height: 48px;
+		min-height: 48px;
+	}
+
+	.captureButton {
+		grid-column: 1 / -1;     /* full-width button under the selects */
+	}
+}
+
+@media (max-width: 480px) {
+	.form {
+		grid-template-columns: 1fr;   /* the two selects stack, so project names fit */
+	}
+}

@@ -1,0 +1,22 @@
+.icon {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+    color: var(--glow);
+  filter: drop-shadow(0 0 5px var(--glow));
+}
+
+.boxed {
+	width: 36px;
+	height: 36px;
+	border: 1px solid color-mix(in srgb, var(--glow) 20%, transparent);
+	border-radius: 9px;
+	background: color-mix(in srgb, var(--glow) 8%, #1a110b);
+	filter: none;
+}
+
+.boxed svg {
+	filter: drop-shadow(0 0 4px color-mix(in srgb, var(--glow) 45%, transparent));
+}
+

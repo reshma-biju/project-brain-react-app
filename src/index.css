@@ -1,14 +1,58 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-  font-family: Arial, sans-serif;
+/* Global page styles */
+html {
+  scroll-behavior: smooth;
+    overscroll-behavior: none;
+
 }
 
-#root{
-  width:100%;
-  min-height:100vh;
+:root {
+  --font-heading: "Fraunces", Georgia, serif;
+  --font-body: "Inter", Arial, sans-serif;
+  --color-page: #1b1412;
+  --color-sidebar: #241916;
+  --color-surface: #30231d;
+  --color-surface-raised: #382820;
+  --color-card-gradient: linear-gradient(145deg, #35271f, #2b201b 82%);
+  --color-input: #211815;
+  --color-text: #f1e5d8;
+  --color-text-muted: #b9a18e;
+  --color-border: #604333;
+  --color-accent: #d89065;
+  --color-teal: #62c5b8;
+  --color-sage: #8fbf91;
+  --card-bg: linear-gradient(180deg, rgb(241 229 216 / 5%), rgb(241 229 216 / 2%));
+  --card-border: rgb(217 144 101 / 20%);
+  --color-danger: #e87968;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-page);
+  color: var(--color-text);
+  line-height: 1.6;
+
+}
+
+/* Prevent unexpected horizontal overflow */
+#root {
+  min-height: 100vh;
+}
+
+.landingPage {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 5%);   /* faint top highlight */
 }

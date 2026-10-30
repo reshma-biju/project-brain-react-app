@@ -1,0 +1,102 @@
+.wrap {
+  position: relative;
+  animation: float 8s ease-in-out infinite alternate;
+}
+
+.glow {
+  position: absolute;
+  inset: -14% -10%;            /* extends beyond the window on all sides */
+  background-size: 100% 100%;  /* stretch the framing wires around the window */
+  background-repeat: no-repeat;
+  mix-blend-mode: screen;      /* dark background disappears, only wires show */
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
+  animation: sway 18s ease-in-out infinite alternate;
+}
+
+.window {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-input);
+  /* teal + terracotta glow around the window */
+  box-shadow:
+    0 0 60px rgb(98 197 184 / 12%),
+    0 0 120px rgb(217 144 101 / 12%),
+    0 30px 80px rgb(0 0 0 / 50%);
+}
+
+.bar {
+  display: flex;
+  gap: 7px;
+  padding: 10px 14px;
+  background: rgb(255 255 255 / 3%);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dotRed { background: #ff5f57; }
+.dotYellow { background: #febc2e; }
+.dotGreen { background: #28c840; }
+
+.img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 18px rgb(98 197 184 / 35%));
+}
+
+@keyframes float {
+  to { transform: translateY(-10px); }
+}
+
+@keyframes sway {
+  from { transform: scale(1) rotate(0deg); }
+  to   { transform: scale(1.04) rotate(0.8deg); }
+}
+
+/* tablet: the preview sits under the text, so keep the wires inside the page */
+@media (max-width: 900px) {
+  .glow {
+    inset: -8% -5%;
+  }
+
+  .img {
+    max-height: 380px;
+    object-fit: cover;
+    object-position: top left;   /* keep the top of the dashboard, crop the bottom */
+  }
+}
+
+@media (max-width: 600px) {
+  .wrap {
+    animation: none;
+    margin: 12px 14px;        /* space around the window so the wires have room */
+  }
+
+  .glow {
+    display: none;
+  }
+
+  .window {
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgb(0 0 0 / 45%);
+  }
+
+  .bar {
+    padding: 8px 12px;
+  }
+
+  .img {
+    max-height: 280px;
+    filter: none;
+  }
+}

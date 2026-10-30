@@ -1,0 +1,245 @@
+.card {
+	display: flex;
+	min-width: 0;
+	height: 100%;/*height: 100% on .card is redundant, since grid items already stretch to equal height. It’s harmless, so remove it if you want.*/
+	flex-direction: column;
+	padding: 19px 20px 0;
+	border: 1px solid rgb(217 144 101 / 38%);
+	border-radius: 10px;
+	background: var(--color-card-gradient);
+	color: var(--color-text);
+}
+
+.topRow,
+.actions,
+.updated,
+.progressLabel,
+.footer,
+.itemCount {
+	display: flex;
+	align-items: center;
+}
+
+.topRow,
+.progressLabel,
+.footer {
+	justify-content: space-between;
+}
+
+.actions {
+	gap: 15px;
+}
+
+.compact {
+	padding: 25px 20px 0;
+}
+
+.compactHeader {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+}
+
+.compactText {
+	flex: 1;
+	min-width: 0;
+}
+
+.compact .name {
+	margin-top: 0;
+	font-size: 1.05rem;
+	display: block;
+	-webkit-line-clamp: unset;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.compact .description {
+	margin-top: 8px;
+	font-size: 0.85rem;
+	line-height: 1.5;
+}
+
+.compactProgress {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 16px 0 14px;
+}
+
+.compactProgress > :first-child {
+	flex: 1;
+}
+
+.compactPercent {
+	flex: 0 0 3ch;
+	color: var(--color-text-muted);
+	font-size: 0.8125rem;
+	font-variant-numeric: tabular-nums;
+	text-align: right;
+}
+
+.compact .footer {
+	min-height: 42px;
+}
+
+
+
+.menuButton {
+	display: inline-grid;
+	place-items: center;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	border: 0;
+	border-radius: 8px;
+	background: transparent;
+	color: var(--color-text-muted);
+	cursor: pointer;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menuButton:hover {
+	color: var(--color-accent);
+	background: rgb(217 144 101 / 12%);
+}
+
+.menuButton:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+.name {
+	display: -webkit-box;
+	min-width: 0;
+	margin-top: 14px;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	color: var(--color-text);
+	font-family: var(--font-heading);
+	font-size: 1.2rem;
+	font-weight: 600;
+	line-height: 1.3;
+	overflow-wrap: anywhere;
+}
+
+
+.description {
+	display: -webkit-box;
+	margin-top: 11px;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	color: var(--color-text-muted);
+	font-size: 0.875rem;
+	line-height: 1.55;
+}
+
+.updated {
+	gap: 11px;
+	margin-top: 13px;
+	color: var(--color-text-muted);
+	font-size: 0.8125rem;
+}
+
+.progressSection {
+	margin-top: 29px;
+	margin-bottom: 20px;
+}
+
+.progressLabel {
+	margin-bottom: 7px;
+	color: var(--color-text-muted);
+	font-size: 0.75rem;
+}
+
+.progressLabel span:last-child {
+	color: var(--color-text);
+	font-variant-numeric: tabular-nums;
+}
+
+
+
+.footer {
+	min-height: 49px;
+	margin-top: auto;
+	border-top: 1px solid rgb(217 144 101 / 16%);
+	color: var(--color-text-muted);
+	font-size: 0.8125rem;
+}
+
+.itemCount {
+	gap: 11px;
+}
+
+
+.openLink {
+	display: inline-grid;
+	place-items: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 8px;
+	color: var(--color-text-muted);
+	text-decoration: none;
+	transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.openLink:hover {
+	color: var(--color-accent);
+	background: rgb(217 144 101 / 12%);
+	transform: translateX(2px);
+}
+
+.openLink:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+@media (max-width: 600px) {
+	.card {
+		padding: 16px 16px 0;
+	}
+
+	.compact {
+		padding: 18px 16px 0;
+	}
+
+	.actions {
+		gap: 8px;                     /* star and ⋮ were 15px apart */
+	}
+
+	.menuButton {
+		width: 36px;                  /* closer to a comfortable tap size */
+		height: 36px;
+	}
+
+	.name {
+		margin-top: 10px;
+		font-size: 1.1rem;
+	}
+
+	.description {
+		margin-top: 8px;
+		font-size: 0.85rem;
+	}
+
+	.updated {
+		margin-top: 10px;
+		gap: 8px;
+	}
+
+	.progressSection {
+		margin-top: 18px;             /* was 29px */
+		margin-bottom: 14px;
+	}
+
+	.footer {
+		min-height: 44px;
+	}
+
+	.openLink {
+		width: 40px;
+		height: 40px;
+	}
+}

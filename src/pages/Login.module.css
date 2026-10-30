@@ -1,0 +1,549 @@
+
+/* ========================================
+   LOGIN PAGE — MAIN LAYOUT
+======================================== */
+
+.loginPage {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--color-page);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+/* ========================================
+   LEFT PANEL — BRAND AND MESSAGE
+======================================== */
+
+.artworkPanel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 48px;
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgb(217 144 101 / 12%) 0%,
+      transparent 65%
+    ),
+    var(--color-sidebar);
+  border-right: 1px solid rgb(217 144 101 / 10%);
+}
+
+/* Subtle decorative glow */
+
+.artworkPanel::before {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  top: 20%;
+  left: 15%;
+  border-radius: 50%;
+  background: rgb(217 144 101 / 5%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.artworkContent {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   BRAND LOGO AND NAME
+======================================== */
+
+.brand,
+.mobileBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+
+.brand img,
+.mobileBrand img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+/* ========================================
+   LEFT-SIDE MESSAGE
+======================================== */
+
+.artworkMessage {
+  margin-top: 120px;
+  max-width: 460px;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--color-accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.artworkMessage h1 {
+  margin: 0 0 22px;
+  font-family: var(--font-heading);
+  font-size: clamp(38px, 4vw, 56px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -1.5px;
+}
+
+.artworkMessage h1 span {
+  color: var(--color-accent);
+}
+
+.artworkMessage p {
+  max-width: 390px;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* ========================================
+   RIGHT PANEL — LOGIN AREA
+======================================== */
+
+.formPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 48px 40px;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgb(217 144 101 / 6%) 0%,
+      transparent 70%
+    ),
+    var(--color-page);
+}
+
+/* ========================================
+   INNER LOGIN CARD
+======================================== */
+
+.loginFormWrapper {
+  width: 100%;
+  max-width: 440px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 42px 38px;
+  border: 1px solid rgb(217 144 101 / 20%);
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    rgb(56 40 32 / 96%),
+    rgb(48 35 29 / 98%)
+  );
+  box-shadow:
+    0 20px 60px rgb(0 0 0 / 18%),
+    inset 0 1px 0 rgb(255 255 255 / 2%);
+}
+
+/* Hidden on desktop; shown on mobile */
+
+.mobileBrand {
+  display: none;
+  margin-bottom: 48px;
+}
+
+/* ========================================
+   FORM HEADING
+======================================== */
+
+.formHeading {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.formHeading h2 {
+  margin: 0 0 8px;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.8px;
+}
+
+.formHeading p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   INPUT FIELDS
+======================================== */
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+
+.formGroup > label {
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.formGroup input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  outline: none;
+  background-color: var(--color-input);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 13px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.formGroup input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+.formGroup input:hover {
+  border-color: var(--color-accent);
+}
+
+.formGroup input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgb(217 144 101 / 14%);
+  background-color: var(--color-surface);
+}
+
+/* Invalid input */
+
+.formGroup input[aria-invalid="true"] {
+  border-color: #e07878;
+}
+
+.formGroup input[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 3px rgb(224 120 120 / 12%);
+}
+
+/* ========================================
+   PASSWORD FIELD AND TOGGLE
+======================================== */
+
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.passwordWrapper input {
+  padding-right: 44px;
+}
+
+.passwordToggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  transform: translateY(-50%);
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.passwordToggle:hover {
+  background-color: rgb(217 144 101 / 10%);
+  color: var(--color-accent);
+}
+
+.passwordToggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   VALIDATION ERROR MESSAGES
+======================================== */
+
+.error {
+  display: block;
+  color: #f08a8a;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+
+.errorMessage,
+.successMessage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  padding: 11px 14px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.successMessage {
+  border-color: rgb(143 191 145 / 28%);
+  background: rgb(92 130 74 / 16%);
+  color: #8ed3b2;
+}
+
+.errorMessage {
+  border-color: rgb(240 138 138 / 28%);
+  background: rgb(240 138 138 / 10%);
+  color: #f08a8a;
+}
+
+.successMessage svg,
+.errorMessage svg {
+  flex: 0 0 auto;
+}
+
+.storageNote {
+  margin: 12px 0 0;
+  color: var(--color-text-muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+
+/* Cyan accent, matching your reference screenshot */
+
+.textLink {
+  color: var(--color-teal);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.textLink:hover {
+  color: #9bddd5;
+  text-decoration: underline;
+}
+
+.textLink:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ========================================
+   SIGN-IN BUTTON
+======================================== */
+
+.submitButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 16px;
+  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+  background: var(--color-accent);
+  color: var(--color-input);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.submitButton:hover {
+  border-color: #e0a078;
+  filter: brightness(1.08);
+  box-shadow: 0 5px 20px rgb(217 144 101 / 18%);
+}
+
+.submitButton:hover svg {
+  transform: translateX(3px);
+}
+
+.submitButton svg {
+  transition: transform 0.2s ease;
+}
+
+.submitButton:active {
+  transform: scale(0.99);
+}
+
+.submitButton:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* ========================================
+   SIGN-UP PROMPT
+======================================== */
+
+.signupPrompt {
+  margin: 24px 0 0;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* ========================================
+   RESPONSIVE — TABLET
+======================================== */
+
+@media (max-width: 1000px) {
+  .artworkPanel {
+    padding: 36px;
+  }
+
+  .formPanel {
+    padding: 36px 28px;
+  }
+
+  .artworkMessage h1 {
+    font-size: clamp(36px, 4.5vw, 48px);
+  }
+
+  .loginFormWrapper {
+    padding: 36px 30px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE — MOBILE
+======================================== */
+
+@media (max-width: 860px) {
+  .loginPage {
+    grid-template-columns: 1fr;
+  }
+
+  .artworkPanel {
+    display: none;
+  }
+
+  .formPanel {
+    min-height: 100vh;
+    padding: 32px 20px;
+  }
+
+  .loginFormWrapper {
+    max-width: 440px;
+  }
+
+  .mobileBrand {
+    display: inline-flex;
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formPanel {
+    padding: 22px 14px;
+  }
+
+  .loginFormWrapper {
+    padding: 30px 22px;
+    border-radius: 12px;
+  }
+
+  .mobileBrand {
+    margin-bottom: 30px;
+    font-size: 18px;
+  }
+
+  .mobileBrand img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .formHeading {
+    margin-bottom: 28px;
+  }
+
+  .formHeading h2 {
+    font-size: 30px;
+  }
+
+  .formHeading p {
+    font-size: 12px;
+  }
+
+  .formOptions {
+    align-items: flex-start;
+    font-size: 10px;
+  }
+
+  .formGroup input {
+    padding: 13px;
+  }
+
+  .passwordWrapper input {
+    padding-right: 44px;
+  }
+
+  .submitButton {
+    padding: 13px 16px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY — REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .formGroup input,
+  .passwordToggle,
+  .submitButton,
+  .submitButton svg,
+  .textLink {
+    transition: none;
+  }
+}

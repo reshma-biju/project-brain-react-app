@@ -1,0 +1,148 @@
+.header {
+	display: flex;
+	position: relative;
+	align-items: flex-start;
+	gap: 26px;
+	padding: 0 8px 20px;
+}
+
+.projectIdentity {
+	min-width: 0;
+	flex: 1;
+}
+
+.titleRow {
+	display: flex;
+	min-width: 0;
+	align-items: center;
+	gap: 13px;
+}
+
+.name {
+	min-width: 0;
+	color: var(--color-text);
+	font-family: var(--font-heading);
+	font-weight: 600;
+	line-height: 1.2;
+	overflow-wrap: break-word;
+}
+
+.description {
+	margin-top: 7px;
+	color: var(--color-text-muted);
+	font-size: 14px;
+}
+
+.updated {
+	display: flex;
+	align-items: center;
+	gap: 11px;
+	margin-top: 8px;
+	color: var(--color-text-muted);
+	font-size: 13px;
+}
+
+.updated svg {
+	flex: 0 0 auto;
+}
+
+.menuButton {
+	display: inline-grid;
+	width: 28px;
+	height: 28px;
+	flex: 0 0 auto;
+	place-items: center;
+	margin: -4px -9px 0 0;
+	padding: 0;
+	border: 0;
+	border-radius: 8px;
+	background: transparent;
+	color: var(--color-text-muted);
+	cursor: pointer;
+}
+
+.menuButton:hover {
+	color: var(--color-accent);
+	background: rgb(217 144 101 / 12%);
+}
+
+.menuButton:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+.headerActions {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: flex-start;
+	gap: 8px;
+	margin-left: auto;
+}
+
+/* phone rules come last so they override the base rules */
+@media (max-width: 560px) {
+	.header {
+		gap: 12px;
+		padding: 0 2px 16px;
+	}
+
+	/* the category icon box */
+	.header > :first-child {
+		width: 44px;
+		height: 44px;
+		flex: 0 0 auto;
+		border-radius: 12px;
+	}
+
+	.header > :first-child svg {
+		width: 22px;
+		height: 22px;
+	}
+
+	.compact {
+		padding: 12px 8px;
+	}
+
+	/* CHANGED: no wrap, so the star stays beside the name.
+	   The name shrinks (min-width: 0) and wraps inside its own space. */
+	.titleRow {
+		flex-wrap: nowrap;
+		align-items: flex-start;
+		gap: 8px;
+	}
+
+	.titleRow > :not(.name) {
+		flex: 0 0 auto;            /* the star never gets squeezed */
+		margin-top: 2px;
+	}
+
+	.name {
+		font-size: 20px;
+		line-height: 1.25;
+		word-break: normal;
+	}
+
+	.description {
+		font-size: 13px;
+		display: -webkit-box;
+		overflow: hidden;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+	}
+
+	.updated {
+		font-size: 12px;
+		gap: 8px;
+	}
+
+	/* CHANGED: bigger tap targets, and no negative margin pushing them off the card */
+	.menuButton {
+		width: 36px;
+		height: 36px;
+		margin: -6px -6px 0 0;
+	}
+
+	.headerActions {
+		gap: 2px;
+	}
+}
