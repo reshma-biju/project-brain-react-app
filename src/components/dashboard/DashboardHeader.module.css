@@ -39,3 +39,24 @@
 	outline: 2px solid var(--color-text);
 	outline-offset: 3px;
 }
+@media (max-width: 600px) {
+    .outerContainer {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .greeting {
+        min-width: 0;            /* lets the text use the leftover width */
+        font-size: 1.35rem;      /* about 22px, was 32px */
+        line-height: 1.25;
+    }
+
+    .createButton {
+        flex-shrink: 0;          /* the button never gets squeezed */
+        min-height: 40px;
+        padding: 0 12px;
+        gap: 6px;
+        font-size: 13px;
+        white-space: nowrap;     /* "New project" stays on one line */
+    }
+}

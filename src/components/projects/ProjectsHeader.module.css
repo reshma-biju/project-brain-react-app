@@ -2,9 +2,9 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
+	gap: 16px;
 	width: 100%;
 	margin: 8px 0 24px;
-
 }
 
 .heading {
@@ -22,30 +22,9 @@
 	font-size: 14px;
 }
 
-@media (max-width: 560px) {
-	.outerContainer {
-		align-items: flex-start;
-		gap: 16px;
-	}
-
-	.heading {
-		font-size: 2rem;
-	}
-
-	.subtitle {
-		font-size: 14px;
-	}
-
-	.createButton {
-		min-height: 42px;
-		gap: 6px;
-		padding: 0 12px;
-		white-space: nowrap;
-	}
-}
-
 .createButton {
 	display: inline-flex;
+	flex-shrink: 0;
 	min-height: 48px;
 	align-items: center;
 	justify-content: center;
@@ -58,6 +37,7 @@
 	font-size: 14px;
 	font-weight: 650;
 	text-decoration: none;
+	white-space: nowrap;
 	transition: background-color 160ms ease, transform 160ms ease;
 }
 
@@ -69,4 +49,29 @@
 .createButton:focus-visible {
 	outline: 2px solid var(--color-text);
 	outline-offset: 3px;
+}
+
+/* phone rules come last so they override the base rules above */
+@media (max-width: 560px) {
+	.outerContainer {
+		gap: 12px;
+		margin: 4px 0 20px;
+	}
+
+	.heading {
+		font-size: 1.6rem;
+	}
+
+	.subtitle {
+		margin-left: 0;
+		font-size: 13px;
+		line-height: 1.4;
+	}
+
+	.createButton {
+		min-height: 40px;
+		gap: 6px;
+		padding: 0 12px;
+		font-size: 13px;
+	}
 }

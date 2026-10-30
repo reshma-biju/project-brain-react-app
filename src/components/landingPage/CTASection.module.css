@@ -21,7 +21,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: url("/images/Glowing%20Neon%20Circuit%20Brain%20Icon.png")
+  background: url("/images/logo.png")
     center / contain no-repeat;
   opacity: 0.06;
   filter: blur(3px);

@@ -9,7 +9,6 @@
   z-index: 0;
 }
 
-
 .art {
   position: absolute;
   inset: -8%;               /* slightly bigger than the area, so edges never show while drifting */
@@ -21,11 +20,15 @@
   will-change: transform;
   animation: drift 20s ease-in-out infinite alternate;
 }
+
 @keyframes drift {
   from { transform: translate(0, 0) scale(1); }
   to   { transform: translate(-1.5%, 1%) scale(1.04); }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .art { animation: none; }
+/* phones: no glow, plain dark background */
+@media (max-width: 768px) {
+  .glow {
+    display: none;
+  }
 }

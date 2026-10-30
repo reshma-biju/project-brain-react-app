@@ -130,13 +130,57 @@
 	white-space: nowrap;
 }
 
-/* ---------- Small screens ---------- */
+/* ---------- Clear filters (subtle text button) ---------- */
+.clearButton {
+	flex-shrink: 0;
+	padding: 4px 8px;
+	border: 0;
+	border-radius: 6px;
+	background: transparent;
+	color: #b9a592;
+	font: inherit;
+	font-size: 0.8rem;
+	font-weight: 500;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.clearButton:hover {
+	color: #e0966c;
+	background: rgb(224 150 108 / 10%);
+}
+
+.clearButton:focus-visible {
+	outline: 2px solid #e0966c;
+	outline-offset: 1px;
+}
+/* ---------- Small screens (last, so it overrides the rules above) ---------- */
 @media (max-width: 600px) {
 	.toolbar {
 		flex-wrap: wrap;
+		gap: 10px;
+		padding: 12px;
+		margin-bottom: 20px;
 	}
 
 	.searchField {
 		flex: 1 1 100%;
+	}
+
+	.searchInput,
+	.categorySelect {
+		height: 44px;
+	}
+
+	/* select takes the leftover width, the count sits at its right */
+	.categorySelect {
+		flex: 1 1 0;
+		min-width: 0;
+	}
+
+	.resultCount {
+		margin-left: auto;
+		padding: 0 2px;
 	}
 }

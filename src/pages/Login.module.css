@@ -306,25 +306,42 @@
   line-height: 1.5;
 }
 
-.errorMessage,
-.successMessage {
-  margin: 0 0 18px;
-  font-size: 12px;
-  line-height: 1.5;
-  text-align: center;
-}
 
-.errorMessage,
 .submitButton:disabled {
   opacity: 0.7;
+  cursor: not-allowed;
+}
+
+
+.errorMessage,
+.successMessage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  padding: 11px 14px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.successMessage {
+  border-color: rgb(143 191 145 / 28%);
+  background: rgb(92 130 74 / 16%);
+  color: #8ed3b2;
 }
 
 .errorMessage {
+  border-color: rgb(240 138 138 / 28%);
+  background: rgb(240 138 138 / 10%);
   color: #f08a8a;
 }
 
-.successMessage {
-  color: #8ed3b2;
+.successMessage svg,
+.errorMessage svg {
+  flex: 0 0 auto;
 }
 
 .storageNote {
@@ -334,35 +351,6 @@
   text-align: center;
 }
 
-/* ========================================
-   REMEMBER ME AND FORGOT PASSWORD
-======================================== */
-
-.formOptions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 4px 0 25px;
-  font-size: 11px;
-}
-
-.rememberMe {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--color-text);
-  cursor: pointer;
-}
-
-.rememberMe input {
-  width: 14px;
-  height: 14px;
-  margin: 0;
-  accent-color: var(--color-accent);
-  cursor: pointer;
-}
 
 /* Cyan accent, matching your reference screenshot */
 

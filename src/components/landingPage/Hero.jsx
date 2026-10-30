@@ -1,8 +1,9 @@
 import styles from "./Hero.module.css";
 import AppPreview from "./AppPreview";
-
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+    const navigate = useNavigate();
   return (
     <section className={styles.hero}>
     
@@ -19,8 +20,7 @@ const Hero = () => {
           </p>
 
           <div className={styles.buttons}>
-            <button className={styles.primaryButton}>Get Started</button>
-            <button className={styles.secondaryButton}>Learn More</button>
+            <button className={styles.primaryButton}  onClick={() => navigate("/signup")}>Get Started</button>
           </div>
         </div>
 

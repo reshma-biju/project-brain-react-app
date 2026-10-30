@@ -1,6 +1,7 @@
 .emptyState {
 	display: grid;
-	min-height: 100%;
+	min-height: calc(100vh - 64px);     /* fallback */
+	min-height: calc(100dvh - 64px);    /* visible height minus the page padding */
 	place-items: center;
 	padding: 48px 20px;
 	text-align: center;
@@ -32,7 +33,7 @@
 
 .headline span {
 	color: var(--color-accent);
-	font-weight: 700;
+	font-weight: 600;                   /* was 700, which isn't loaded */
 }
 
 .description {
@@ -69,15 +70,29 @@
 	outline-offset: 3px;
 }
 
+/* phone rules come last so they override the base rules */
 @media (max-width: 480px) {
-	.brain {
-		width: 96px;
+	.emptyState {
+		padding: 32px 8px;
+	}
+
+	.icon {
+		width: 96px;                    /* was .brain, which matched nothing */
 		height: 96px;
 		margin-bottom: 22px;
 	}
 
+	.headline {
+		font-size: 28px;
+	}
+
 	.description {
 		max-width: 290px;
+		font-size: 14px;
+	}
+
+	.createButton {
+		margin-top: 24px;
 	}
 }
 

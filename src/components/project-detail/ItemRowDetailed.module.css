@@ -24,6 +24,7 @@
 }
 
 .statusCircle {
+	position: relative;
 	display: inline-grid;
 	width: 20px;
 	height: 20px;
@@ -34,6 +35,13 @@
 	background: transparent;
 	color: #218b45;
 	cursor: pointer;
+}
+
+/* invisible larger tap area, so the small circle is easy to hit on a phone */
+.statusCircle::after {
+	content: "";
+	position: absolute;
+	inset: -10px;
 }
 
 .done {
@@ -56,24 +64,17 @@
 	border-radius: 999px;
 	background: color-mix(in srgb, var(--status-color) 20%, transparent);
 	color: var(--status-color);
+	color-scheme: dark; /* the native list opens dark */
 	font: inherit;
 	font-size: 11px;
 	cursor: pointer;
-	 color-scheme: dark;                 /* tells the browser to draw its native list dark */
-
 }
-
- 
-
 
 .statusSelect option {
-  background: #2a1d17;                /* solid dark brown, not transparent */
-  color: #f5e9dc;                     /* readable cream, not the status color */
+	background: #2a1d17;
+	color: #f5e9dc;
 }
-.statusOption[data-highlighted] {
-  background: #d88758;
-  color: #1b120e;
-}
+
 .copy {
 	min-width: 0;
 }
@@ -84,7 +85,7 @@
 	font-size: 14px;
 	font-weight: 600;
 	line-height: 1.4;
-	overflow-wrap: anywhere;
+	overflow-wrap: break-word; /* was anywhere, which splits words mid-word */
 }
 
 .details {
@@ -110,21 +111,18 @@
 	justify-content: center;
 }
 
+/* phone rules come last so they override the base rules */
 @media (max-width: 600px) {
 	.row {
-		grid-template-columns: 20px 36px minmax(0, 1fr) 32px;
-		gap: 10px;
+		grid-template-columns: 20px 36px minmax(0, 1fr) 36px;
+		align-items: start;
+		gap: 8px 12px;
+		min-height: 0;
+		padding: 14px;
 	}
 
-	.row > :nth-child(4) {
-		grid-column: 3;
-		grid-row: 2;
-		justify-self: start;
-	}
-
-	.date {
-		grid-column: 4;
-		grid-row: 2;
+	.statusCircle {
+		margin-top: 8px; /* centers the circle against the 36px icon box */
 	}
 
 	.copy {
@@ -132,13 +130,39 @@
 		grid-row: 1;
 	}
 
+	.title {
+		font-size: 15px;
+	}
+
+	.details {
+		font-size: 12px;
+		-webkit-line-clamp: 2; /* more room for details now that the row is taller */
+	}
+
 	.rowActions {
 		grid-column: 4;
 		grid-row: 1;
+		margin: -4px -6px 0 0; /* keeps the 36px menu button inside the card edge */
 	}
 
-	.row > :nth-child(4),
+	/* the status control (4th child) */
+	.row > :nth-child(4) {
+		grid-column: 3 / 5;
+		grid-row: 2;
+		justify-self: start;
+	}
+
+	.statusSelect {
+		width: auto;
+		min-width: 104px;
+		min-height: 32px;
+		font-size: 12px;
+	}
+
 	.date {
-		margin-top: 2px;
+		grid-column: 3 / 5;
+		grid-row: 3;
+		font-size: 12px;
+		text-align: left;
 	}
 }

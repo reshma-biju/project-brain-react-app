@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Plus, Search } from "lucide-react";
+import { Plus, Search ,ListChecks} from "lucide-react";
 import ItemRowDetailed from "./ItemRowDetailed";
 import ItemsToolbar from "./ItemsToolbar";
 import AddItemModal from "./AddItemModal";
@@ -44,7 +44,9 @@ const ItemsTab = ({ projectId, items, highlightId, onAdd, onUpdateItem, onStatus
     return (
       <>
         <div className={styles.empty}>
-          <p>No items yet. Capture your first idea.</p>
+          <ListChecks size={28} aria-hidden="true" />
+<h2>No items yet</h2>
+<p>Capture your first idea.</p>
           <button className={styles.addButton} type="button" onClick={() => setIsAddOpen(true)}>
             <Plus size={17} aria-hidden="true" />
             <span>Add item</span>
@@ -86,7 +88,7 @@ const ItemsTab = ({ projectId, items, highlightId, onAdd, onUpdateItem, onStatus
         <div className={styles.noMatches}>
           <Search size={24} aria-hidden="true" />
           <h2>No items match</h2>
-          <button type="button" onClick={clearFilters}>
+          <button type="button" onClick={clearFilters} >
             Clear filters
           </button>
         </div>

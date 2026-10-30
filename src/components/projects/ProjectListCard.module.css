@@ -196,3 +196,50 @@
 	outline: 2px solid var(--color-accent);
 	outline-offset: 2px;
 }
+@media (max-width: 600px) {
+	.card {
+		padding: 16px 16px 0;
+	}
+
+	.compact {
+		padding: 18px 16px 0;
+	}
+
+	.actions {
+		gap: 8px;                     /* star and ⋮ were 15px apart */
+	}
+
+	.menuButton {
+		width: 36px;                  /* closer to a comfortable tap size */
+		height: 36px;
+	}
+
+	.name {
+		margin-top: 10px;
+		font-size: 1.1rem;
+	}
+
+	.description {
+		margin-top: 8px;
+		font-size: 0.85rem;
+	}
+
+	.updated {
+		margin-top: 10px;
+		gap: 8px;
+	}
+
+	.progressSection {
+		margin-top: 18px;             /* was 29px */
+		margin-bottom: 14px;
+	}
+
+	.footer {
+		min-height: 44px;
+	}
+
+	.openLink {
+		width: 40px;
+		height: 40px;
+	}
+}
