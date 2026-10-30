@@ -40,7 +40,7 @@ const Settings = () => {
     }
 
     return (
-        <main className={styles.settingsPage}>
+        <div className={styles.settingsPage}>
             <header className={styles.pageHeader}>
                 <h1>Settings</h1>
                 <p>Manage your account and workspace preferences.</p>
@@ -97,6 +97,17 @@ const Settings = () => {
                                     >
                                         Save
                                     </button>
+                                    <button
+                                        className={styles.cancelButton}
+                                        type="button"
+                                        onClick={() => {
+                                            setName(user?.name ?? "");
+                                            setError("");
+                                            setIsEditing(false);
+                                        }}
+                                    >
+                                        Cancel
+                                    </button>
                                 </div>
                             </form>
                         )}
@@ -127,7 +138,7 @@ const Settings = () => {
                     Log Out
                 </button>
             </section>
-        </main>
+        </div>
     );
 }
 export default Settings;

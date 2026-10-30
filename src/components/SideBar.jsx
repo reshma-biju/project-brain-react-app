@@ -10,57 +10,43 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 import styles from "./SideBar.module.css";
 
-function Sidebar() {
+function Sidebar({ isOpen = false, onClose }) {
   const navigate = useNavigate();
   const { user, logout } = useContext(AuthContext);
 
   async function handleLogout() {
+    onClose?.();
     await logout();
     navigate("/login");
   }
 
+  const getLinkClass = ({ isActive }) =>
+    isActive ? `${styles.navLink} ${styles.active}` : styles.navLink;
+
   return (
-    <aside className={styles.sidebar}>
+    <aside
+      id="app-sidebar"
+      className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}
+    >
       {/* Brand */}
-      <NavLink to="/" className={styles.brand}>
-        <img src="/images/Glowing Neon Circuit Brain Icon.png" alt="Project Brain logo" />
+      <NavLink to="/" className={styles.brand} onClick={onClose}>
+        <img src="/images/logo.png" alt="Project Brain logo" />
         <span>Project Brain</span>
       </NavLink>
 
       {/* Navigation */}
       <nav className={styles.navigation}>
-        <NavLink
-          to="/dashboard"
-          className={({ isActive }) =>
-            isActive
-              ? `${styles.navLink} ${styles.active}`
-              : styles.navLink
-          }
-        >
+        <NavLink to="/dashboard" className={getLinkClass} onClick={onClose}>
           <LayoutDashboard size={19} />
           <span>Dashboard</span>
         </NavLink>
 
-        <NavLink
-          to="/projects"
-          className={({ isActive }) =>
-            isActive
-              ? `${styles.navLink} ${styles.active}`
-              : styles.navLink
-          }
-        >
+        <NavLink to="/projects" className={getLinkClass} onClick={onClose}>
           <FolderKanban size={19} />
           <span>Projects</span>
         </NavLink>
 
-        <NavLink
-          to="/settings"
-          className={({ isActive }) =>
-            isActive
-              ? `${styles.navLink} ${styles.active}`
-              : styles.navLink
-          }
-        >
+        <NavLink to="/settings" className={getLinkClass} onClick={onClose}>
           <Settings size={19} />
           <span>Settings</span>
         </NavLink>

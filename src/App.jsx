@@ -11,6 +11,7 @@ import Settings from './pages/Settings';
 import AppLayout from './layout/AppLayout';
 import ProtectedRoute from './components/ProtectedRoute';
 import ProjectDetail from "./pages/ProjectDetail";
+import NotFound from "./pages/NotFound";
 
 function App() {
 
@@ -32,6 +33,9 @@ function App() {
     
     </Route>
   </Route>
+
+   {/* Anything else */}
+      <Route path="*" element={<NotFound />} />
 </Routes>
   )
 }

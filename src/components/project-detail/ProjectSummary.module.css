@@ -84,6 +84,7 @@
 	white-space: nowrap;
 }
 
+/* phone rules come last so they override the base rules */
 @media (max-width: 700px) {
 	.summary {
 		flex-direction: column;
@@ -101,20 +102,29 @@
 }
 
 @media (max-width: 420px) {
+	.summary {
+		padding: 12px;
+	}
+
+	/* a real 2x2 grid instead of wrapping flex items */
 	.stats {
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
 	}
 
 	.stat {
-		flex-basis: 50%;
-		min-height: 48px;
-	}
-
-	.stat:nth-child(3) {
+		min-height: 56px;
+		padding: 10px 6px;
 		border-left: 0;
 	}
 
+	/* vertical divider: only the right column */
+	.stat:nth-child(even) {
+		border-left: 1px solid rgb(224 150 108 / 14%);
+	}
+
+	/* horizontal divider: only the second row */
 	.stat:nth-child(n + 3) {
 		border-top: 1px solid rgb(224 150 108 / 14%);
-}
+	}
 }

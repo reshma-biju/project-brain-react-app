@@ -1,9 +1,13 @@
 import styles from "./NavBar.module.css";
+import { useNavigate } from "react-router-dom";
+
 const NavBar = () => {
+    const navigate = useNavigate();
+
     return (
         <nav className={styles.navbar}>
             <div className={styles.logo}>
-                 <img src="/images/Glowing Neon Circuit Brain Icon.png" alt="Project Brain logo" />
+                 <img src="/images/logo.png" alt="Project Brain logo" />
                 <h2>Project Brain</h2>
             </div>
 
@@ -13,8 +17,8 @@ const NavBar = () => {
             </div>
 
             <div className={styles.actions}>
-                <button>Login</button>
-                <button>Get Started</button>
+                <button onClick={() => navigate("/login")}>Login</button>
+                <button onClick={() => navigate("/signup")}>Get Started</button>
             </div>
         </nav>
     );

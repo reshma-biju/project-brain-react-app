@@ -6,7 +6,7 @@ const EmptyState = ({ onCreateProject }) => (
 		<div className={styles.content}>
 			<img
 				className={styles.icon}
-				 src="/images/Glowing Neon Circuit Brain Icon.png"
+				 src="/images/logo.png"
 				alt="Project Brain logo"
 				aria-hidden="true"
 			/>

@@ -16,8 +16,6 @@
   font-weight: 600;
 }
 
-
-
 .pageHeader p,
 .sectionHeading p,
 .logoutCopy p {
@@ -66,11 +64,7 @@
   margin-top: 12px;
 }
 
-.nameForm label {
-  color: var(--color-text);
-  font-size: 12px;
-}
-
+.nameForm label,
 .nameLabel {
   color: var(--color-text);
   font-size: 12px;
@@ -93,7 +87,6 @@
   align-items: center;
   overflow: hidden;
   padding: 0 11px;
-
   border-radius: 6px;
   background: var(--color-input);
   color: var(--color-text);
@@ -131,7 +124,7 @@
 
 .inputRow {
   display: grid;
-  grid-template-columns: minmax(0, 240px) 78px;
+  grid-template-columns: minmax(0, 240px) 78px 78px;
   gap: 10px;
 }
 
@@ -140,7 +133,7 @@
   min-width: 0;
   height: 32px;
   padding: 0 11px;
-  border: 1px solid var(--color-bg);
+  border: 1px solid var(--color-border);   /* was --color-bg, which doesn't exist */
   border-radius: 6px;
   background: var(--color-input);
   color: var(--color-text);
@@ -154,6 +147,7 @@
 }
 
 .saveButton,
+.cancelButton,
 .logoutButton {
   display: inline-flex;
   min-height: 32px;
@@ -173,6 +167,16 @@
   background: var(--color-accent);
   color: var(--color-input);
   font-weight: 650;
+}
+
+.cancelButton {
+  border-color: var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+}
+
+.cancelButton:hover {
+  background: var(--color-surface-raised);
 }
 
 .saveButton:hover,
@@ -204,7 +208,7 @@
 .errorMessage {
   min-height: auto;
   padding: 0;
-  color: var(--color-danger);
+  color: var(--color-danger, #e87968);
 }
 
 .successMessage {
@@ -241,12 +245,18 @@
 }
 
 .saveButton:focus-visible,
+.cancelButton:focus-visible,
 .logoutButton:focus-visible {
   outline: 2px solid var(--color-text);
   outline-offset: 3px;
 }
 
+/* phone rules come last so they override the base rules */
 @media (max-width: 600px) {
+  .pageHeader h1 {
+    font-size: 1.6rem;
+  }
+
   .settingSection {
     grid-template-columns: 44px minmax(0, 1fr);
     gap: 12px;
@@ -258,6 +268,38 @@
     height: 44px;
   }
 
+  .displayNameRow {
+    width: 100%;
+  }
+
+  .displayName {
+    min-height: 44px;
+    flex: 1 1 auto;
+    width: auto;
+    font-size: 14px;
+  }
+
+  .editButton {
+    width: 44px;
+    height: 44px;
+  }
+
+  .inputRow {
+    grid-template-columns: minmax(0, 1fr) 84px 84px;
+  }
+
+  .inputRow input {
+    height: 44px;
+    font-size: 16px;          /* stops iOS Safari zooming in on focus */
+  }
+
+  .saveButton,
+  .cancelButton,
+  .logoutButton {
+    min-height: 44px;
+    font-size: 14px;
+  }
+
   .logoutSection {
     grid-template-columns: 44px minmax(0, 1fr);
   }
@@ -265,9 +307,5 @@
   .logoutButton {
     grid-column: 2;
     justify-self: start;
-  }
-
-  .inputRow {
-    grid-template-columns: minmax(0, 1fr) 78px;
   }
 }

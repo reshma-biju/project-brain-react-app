@@ -1,10 +1,8 @@
-
 .hero {
+  position: relative;
+  overflow: hidden;
   padding: 40px 24px;
-  position: relative;      /* the glow positions itself inside this */
-  overflow: hidden;        /* the drifting image never spills out */
-  text-align: center;
-    background:
+  background:
     radial-gradient(
       ellipse at 50% 15%,
       rgb(217 144 101 / 10%),
@@ -15,57 +13,60 @@
 
 .inner {
   position: relative;
-  z-index: 1;              /* content above the glow */
+  z-index: 1;                       /* content above any glow */
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 48px;
+  grid-template-columns: 1fr 1.3fr; /* wider right column, so the preview is bigger */
+  gap: 40px;
   align-items: center;
-  padding: 64px 48px;
+  padding: 40px 48px;
 }
 
 .heroContent {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: left;        /* was centered */
+  min-width: 0;
+  text-align: left;
 }
 
 /* Small introductory label */
 .label {
+  margin-bottom: 24px;
   color: var(--color-teal);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 2px;
-  margin-bottom: 24px;
 }
 
 /* Main heading */
 .heroContent h1 {
+  margin-bottom: 24px;
+  color: var(--color-text);
   font-family: var(--font-heading);
-  font-size: 56px;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
   font-weight: 600;
   line-height: 1.15;
-  color: var(--color-text);
-  margin-bottom: 24px;
 }
 
 /* Description */
 .description {
-  max-width: 600px;
-  margin: 0 auto 32px;
+  max-width: 440px;
+  margin: 0 0 32px;                 /* was "0 auto", which centered it in a left-aligned column */
   color: var(--color-text-muted);
   font-size: 18px;
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 /* Button container */
 .buttons {
   display: flex;
   gap: 16px;
-  justify-content: flex-start;   /* was center, if you had it */
+  justify-content: flex-start;
 }
 
 /* Primary button */
 .primaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 14px 24px;
   border: 1px solid var(--color-accent);
   border-radius: 8px;
@@ -90,7 +91,6 @@
   cursor: pointer;
 }
 
-/* Hover effects */
 .primaryButton:hover {
   background-color: #e0a078;
 }
@@ -100,22 +100,74 @@
   color: var(--color-teal);
 }
 
-/* Smaller screens */
+
+
+/* Tablet and smaller: stack text above the preview */
 @media (max-width: 900px) {
   .hero {
-    padding: 72px 20px;
+    padding: 24px 20px;
   }
 
-  .heroContent h1 {
-    font-size: 38px;
+  .inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+    padding: 24px 0;                /* was 64px 48px: this was the narrow-column bug */
   }
-  .inner { grid-template-columns: 1fr; }
 
   .description {
+    max-width: 560px;
     font-size: 16px;
   }
 
   .buttons {
     flex-wrap: wrap;
   }
+
+ 
+
+ 
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  .hero {
+    padding: 8px 16px 24px;
+  }
+
+  .inner {
+    gap: 28px;
+    padding: 20px 0 8px;
+  }
+
+  .label {
+    margin-bottom: 14px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+
+  .heroContent h1 {
+    margin-bottom: 14px;
+    font-size: 2rem;                /* about 32px, about 3 lines instead of 5 */
+    line-height: 1.15;
+  }
+
+  .description {
+    margin-bottom: 22px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .buttons {
+    gap: 10px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    flex: 1 1 0;                    /* the two buttons share the row equally */
+    padding: 12px 14px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  
 }

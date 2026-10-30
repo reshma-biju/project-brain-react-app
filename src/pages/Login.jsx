@@ -129,7 +129,7 @@ function Login() {
       <section className={styles.artworkPanel}>
         <div className={styles.artworkContent}>
           <Link to="/" className={styles.brand}>
-            <img src="/images/Glowing Neon Circuit Brain Icon.png" alt="Project Brain logo" />
+            <img src="/images/logo.png" alt="Project Brain logo" />
             <span>Project Brain</span>
           </Link>
 
@@ -152,7 +152,7 @@ function Login() {
       <section className={styles.formPanel}>
         <div className={styles.loginFormWrapper}>
           <Link to="/" className={styles.mobileBrand}>
-            <img src="/images/Glowing Neon Circuit Brain Icon.png" alt="Project Brain logo" />
+            <img src="/images/logo.png" alt="Project Brain logo" />
             <span>Project Brain</span>
           </Link>
 

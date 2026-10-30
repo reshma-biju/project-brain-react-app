@@ -43,10 +43,14 @@ export async function login({ email, password }) {
     throw new Error("Incorrect email or password");
   }
 
-  saveJSON(SESSION_KEY, {
-    userId: user.id,
-    expiresAt: Date.now() + SESSION_DURATION,
-  });
+  if (
+    !saveJSON(SESSION_KEY, {
+      userId: user.id,
+      expiresAt: Date.now() + SESSION_DURATION,
+    })
+  ) {
+    throw new Error("Unable to sign in on this browser");
+  }
 }
 
 export function logout() {
@@ -63,7 +67,7 @@ export function updateDisplayName(name) {
   );
   const updatedUser = updatedUsers.find((entry) => entry.id === session.userId);
   if (!updatedUser || !saveJSON(USERS_KEY, updatedUsers)) return null;
-
+// eslint-disable-next-line no-unused-vars
   const { passwordHash, ...safeUser } = updatedUser;
   return safeUser;
 }
@@ -79,7 +83,7 @@ export function getSessionUser() {
 
   const user = loadJSON(USERS_KEY, []).find((entry) => entry.id === session.userId);
   if (!user) return null;
-
+// eslint-disable-next-line no-unused-vars
   const { passwordHash, ...safeUser } = user;
   return safeUser;
 }

@@ -7,7 +7,7 @@ function Footer() {
       <div className={styles.content}>
         <div className={styles.brand}>
            <div className={styles.brandHeader}>
-    <img src="/images/Glowing Neon Circuit Brain Icon.png" alt="Project Brain logo" />
+    <img src="/images/logo.png" alt="Project Brain logo" />
     <h3>Project Brain</h3>
   </div>
           <p>Your second brain for personal projects.</p>

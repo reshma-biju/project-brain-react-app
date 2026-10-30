@@ -6,8 +6,6 @@
 	padding: 0 8px 20px;
 }
 
-
-
 .projectIdentity {
 	min-width: 0;
 	flex: 1;
@@ -24,10 +22,9 @@
 	min-width: 0;
 	color: var(--color-text);
 	font-family: var(--font-heading);
-	
 	font-weight: 600;
 	line-height: 1.2;
-	overflow-wrap: anywhere;
+	overflow-wrap: break-word;
 }
 
 .description {
@@ -82,21 +79,70 @@
 	margin-left: auto;
 }
 
+/* phone rules come last so they override the base rules */
 @media (max-width: 560px) {
 	.header {
-		gap: 15px;
+		gap: 12px;
 		padding: 0 2px 16px;
+	}
+
+	/* the category icon box */
+	.header > :first-child {
+		width: 44px;
+		height: 44px;
+		flex: 0 0 auto;
+		border-radius: 12px;
+	}
+
+	.header > :first-child svg {
+		width: 22px;
+		height: 22px;
 	}
 
 	.compact {
 		padding: 12px 8px;
 	}
 
-	.name {
-		font-size: 25px;
+	/* CHANGED: no wrap, so the star stays beside the name.
+	   The name shrinks (min-width: 0) and wraps inside its own space. */
+	.titleRow {
+		flex-wrap: nowrap;
+		align-items: flex-start;
+		gap: 8px;
 	}
 
-	.titleRow {
+	.titleRow > :not(.name) {
+		flex: 0 0 auto;            /* the star never gets squeezed */
+		margin-top: 2px;
+	}
+
+	.name {
+		font-size: 20px;
+		line-height: 1.25;
+		word-break: normal;
+	}
+
+	.description {
+		font-size: 13px;
+		display: -webkit-box;
+		overflow: hidden;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+	}
+
+	.updated {
+		font-size: 12px;
 		gap: 8px;
+	}
+
+	/* CHANGED: bigger tap targets, and no negative margin pushing them off the card */
+	.menuButton {
+		width: 36px;
+		height: 36px;
+		margin: -6px -6px 0 0;
+	}
+
+	.headerActions {
+		gap: 2px;
 	}
 }

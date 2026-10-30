@@ -42,3 +42,26 @@
 	gap: 20px;
 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
+@media (max-width: 700px) {
+	.section {
+		margin-bottom: 24px;
+	}
+
+	.header {
+		margin-bottom: 10px;
+	}
+
+	.heading {
+		font-size: 1.25rem;
+	}
+
+	.viewAll {
+		padding: 4px 8px;
+		font-size: 0.8rem;
+	}
+
+	.grid {
+		grid-template-columns: minmax(0, 1fr);   /* one card per row, never wider than the screen */
+		gap: 12px;
+	}
+}
